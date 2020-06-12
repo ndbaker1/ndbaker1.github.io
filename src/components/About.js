@@ -1,10 +1,12 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 
-// icons for buttons
+// images for buttons
 import Octocat from '../img/octocat.png';
 import resumeIcon from '../img/resume-icon.png';
+
 // assets
+import Photo from '../img/Self-Photo.png';
 import Resume from '../assets/Nicholas Baker Resume.pdf';
 
 class About extends React.Component {
@@ -14,7 +16,7 @@ class About extends React.Component {
         <div className="split about-left">
           <Fade left delay={500}>
             {/* profile picture - temporary cat picture*/}
-            <img src="http://placekitten.com/800/800" alt="self" className="self-image" />
+            <img src={Photo} alt="self" className="self-image" />
           </Fade>
         </div>
         <div className="about-divider"></div>
@@ -29,14 +31,13 @@ class About extends React.Component {
               </p>
               <h2>Primary Skills / Interests</h2>
               <p>
-                
                 Full-Stack & Desktop Development<br/>
                 Machine Learning & Signal Processing<br/>
-                with tools like <code>C++, Python, JavaScript, HTML, CSS, ReactJS, Java</code> and more!
+                with tools like <code>C++, Python, JavaScript, HTML, CSS, ReactJS, and Java</code>
               </p>
               <div className="info-link-box">
-                <a className="info-link" href="https://github.com/ndbaker1" target="_blank" rel="noopener noreferrer"><img src={Octocat} alt="github" width="64px"/></a>
-                <a className="info-link" href={Resume} target="_blank" rel="noopener noreferrer"><img src={resumeIcon} alt="resume" width="64px"/></a>
+                <a className="info-link" href="https://github.com/ndbaker1" target="_blank" rel="noopener noreferrer"><img src={Octocat} alt="github"/></a>
+                <a className="info-link" href={Resume} target="_blank" rel="noopener noreferrer"><img src={resumeIcon} alt="resume"/></a>
               </div>
             </div>
           </Fade>

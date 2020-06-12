@@ -32,7 +32,6 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background: ;
   animation: load-in .5s ease .5s forwards; 
 }@keyframes load-in {
   0% { height: 100%; }
@@ -90,6 +89,7 @@
 }
 
 
+
 /* About -------------------------------------------------- */
 #about {
   height: 100vh;
@@ -111,14 +111,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  padding: 150px 0;
+  padding: 150px 3%;
   height: 100%;
   width: calc(50% - 40px - 2px);
   position: absolute;
   z-index: 1;
   top: 0;
-  overflow-x: hidden;
 }.about-left {
   left: 40px;
 }.about-right {
@@ -136,23 +134,20 @@
   margin: 20px auto 0;
   font-size: 2.2rem;
   transition: .3s;
-}.self-info-box h2:hover {
-  transform: translateY(-8px);
 }.self-info-box p {
   display: inline-block;
   margin-top: 10px;
   font-size: 1.2rem;
   margin-bottom: 0
 }.self-info-box code {
-  font-family: ;
   font-size: 1.2rem;
   color: #96FFFF;
 }
 
 .self-image {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-  width: 80%;
-  padding: auto;
+  max-width:100%;
+  max-height:100%;
 }
 
 /* about me links [ Github, Resume ]*/
@@ -170,7 +165,11 @@
 }.info-link:hover {
   background-color: #100526c4;
   border-color: slategrey;
+}.info-link img {
+  width: 64px;
 }
+
+
 
 /* Projects ----------------------------------------------- */
 #projects {
@@ -243,8 +242,9 @@
 }.github-link:hover {
   background-color: rgba(15, 5, 36, 0.769);
   border-color: slategrey;
+}.github-link img {
+  width: 64px;
 }
-
 
 
 
@@ -300,6 +300,7 @@
   position: relative;
   padding-bottom: 10px;
 }
+
 
 /* formatting for unsent message */
 .title-unsent {
