@@ -33,7 +33,6 @@ class About extends React.Component {
               <p>
                 Full-Stack & Desktop Development<br/>
                 Machine Learning & Signal Processing<br/>
-                with tools like <code>C++, Python, JavaScript, HTML, CSS, ReactJS, and Java</code>
               </p>
               <div className="info-link-box">
                 <a className="info-link" href="https://github.com/ndbaker1" target="_blank" rel="noopener noreferrer"><img src={Octocat} alt="github"/></a>
