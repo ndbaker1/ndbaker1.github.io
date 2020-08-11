@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/personal-site/static/css/main.1c4e8e03.chunk.css",
+    "main.css": "/personal-site/static/css/main.53c66113.chunk.css",
     "main.js": "/personal-site/static/js/main.ab8c05fd.chunk.js",
     "main.js.map": "/personal-site/static/js/main.ab8c05fd.chunk.js.map",
     "runtime-main.js": "/personal-site/static/js/runtime-main.c5f24892.js",
@@ -8,9 +8,9 @@
     "static/js/2.22958e7c.chunk.js": "/personal-site/static/js/2.22958e7c.chunk.js",
     "static/js/2.22958e7c.chunk.js.map": "/personal-site/static/js/2.22958e7c.chunk.js.map",
     "index.html": "/personal-site/index.html",
-    "precache-manifest.4889bb9c1ccac22a67201e9c2ace0605.js": "/personal-site/precache-manifest.4889bb9c1ccac22a67201e9c2ace0605.js",
+    "precache-manifest.ad1dc228ebd4bd9eb855100f7ddd8a67.js": "/personal-site/precache-manifest.ad1dc228ebd4bd9eb855100f7ddd8a67.js",
     "service-worker.js": "/personal-site/service-worker.js",
-    "static/css/main.1c4e8e03.chunk.css.map": "/personal-site/static/css/main.1c4e8e03.chunk.css.map",
+    "static/css/main.53c66113.chunk.css.map": "/personal-site/static/css/main.53c66113.chunk.css.map",
     "static/js/2.22958e7c.chunk.js.LICENSE.txt": "/personal-site/static/js/2.22958e7c.chunk.js.LICENSE.txt",
     "static/media/Discord-logo.svg": "/personal-site/static/media/Discord-logo.f8389ca1.svg",
     "static/media/DiscordpyImage.png": "/personal-site/static/media/DiscordpyImage.075abdba.png",
@@ -30,7 +30,7 @@
   "entrypoints": [
     "static/js/runtime-main.c5f24892.js",
     "static/js/2.22958e7c.chunk.js",
-    "static/css/main.1c4e8e03.chunk.css",
+    "static/css/main.53c66113.chunk.css",
     "static/js/main.ab8c05fd.chunk.js"
   ]
 }
