@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7c30e2011ee4b3e80b0336baeaaad64b",
+    "revision": "b77dd0589768d4e102f84c662cc16033",
     "url": "/personal-site/index.html"
   },
   {
-    "revision": "f53473ec22ba45c845ca",
-    "url": "/personal-site/static/css/main.53c66113.chunk.css"
+    "revision": "ed1b23f12d673fe4c4cf",
+    "url": "/personal-site/static/css/main.66ace444.chunk.css"
   },
   {
-    "revision": "b4bf829d3a85ceed6fb5",
-    "url": "/personal-site/static/js/2.22958e7c.chunk.js"
+    "revision": "987a0ae32191d481cb56",
+    "url": "/personal-site/static/js/2.a09b9b08.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/personal-site/static/js/2.22958e7c.chunk.js.LICENSE.txt"
+    "url": "/personal-site/static/js/2.a09b9b08.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f53473ec22ba45c845ca",
-    "url": "/personal-site/static/js/main.ab8c05fd.chunk.js"
+    "revision": "ed1b23f12d673fe4c4cf",
+    "url": "/personal-site/static/js/main.85b7e35b.chunk.js"
   },
   {
     "revision": "e15ce0e39e15dd13ef58",
@@ -58,10 +58,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "880e93e4722800e8dd2b6dd703b0d563",
     "url": "/personal-site/static/media/Nicholas Baker Resume.880e93e4.pdf"
-  },
-  {
-    "revision": "418cc85096b21e3ced1e691c7dfe47b7",
-    "url": "/personal-site/static/media/Self-Photo.418cc850.png"
   },
   {
     "revision": "ac1e0802303417a121dc56efa576d2e5",
