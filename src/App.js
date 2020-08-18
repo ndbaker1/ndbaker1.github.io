@@ -1,9 +1,8 @@
 import React from 'react';
-import Contact from './components/Contact';
-import About from './components/About';
-import Navbar from './components/Navbar';
-import Projects from './components/Projects';
-import './App.css';
+import Contact from './components/contact/Contact';
+import About from './components/about/About';
+import Navbar from './components/navbar/Navbar';
+import Projects from './components/projects/Projects';
 
 function App() {
   return (

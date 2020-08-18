@@ -1,5 +1,7 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import './contact.css'
+
 class Contact extends React.Component {
   constructor(props){
     super(props);

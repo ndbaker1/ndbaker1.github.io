@@ -1,20 +1,21 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import './projects.css'
 
 // LOGOS
 // Logo credit goes to their respective creators
-import pythonLogo from '../img/Python-logo.png';
-import javascriptLogo from '../img/JavaScript-logo.png';
-import javaLogo from '../img/Java-logo.svg';// "Icon made by Freepik from www.flaticon.com"
-import htmlLogo from '../img/HTML5-logo.png';
-import discordLogo from '../img/Discord-logo.svg';
-import Octocat from '../img/octocat.png';
+import pythonLogo from '../../img/Python-logo.png';
+import javascriptLogo from '../../img/JavaScript-logo.png';
+import javaLogo from '../../img/Java-logo.svg';// "Icon made by Freepik from www.flaticon.com"
+import htmlLogo from '../../img/HTML5-logo.png';
+import discordLogo from '../../img/Discord-logo.svg';
+import Octocat from '../../img/octocat.png';
 
 // Background images
-import NewsUnchainedImage from '../img/NewsUnchainedImage.png';
-import discordpyBackground from '../img/DiscordpyImage.png';
-import wavAnalyzerImage from '../img/WavAnalyzerImage.png';
-import javaNNImage from '../img/JavaNeuralNetworkSimulationImage.png';
+import NewsUnchainedImage from '../../img/NewsUnchainedImage.png';
+import discordpyBackground from '../../img/DiscordpyImage.png';
+import wavAnalyzerImage from '../../img/WavAnalyzerImage.png';
+import javaNNImage from '../../img/JavaNeuralNetworkSimulationImage.png';
 
 
 function Project(props) {
