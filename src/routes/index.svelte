@@ -1,14 +1,18 @@
 <script>
+  import { onMount } from 'svelte'
   import Navbar from '../components/Navbar.svelte'
   import About from '../components/About.svelte'
   import Projects from '../components/Project.svelte'
-  import Contact from '../components/Contact.svelte'
+  import { Theme } from '../services/theme.service'
+
+  onMount(() => Theme.refresh())
 </script>
 
 <Navbar />
-<About />
-<Projects />
-<Contact />
+<div class="px-40">
+  <About />
+  <Projects />
+</div>
 <div class="page-loader" />
 
 <style>

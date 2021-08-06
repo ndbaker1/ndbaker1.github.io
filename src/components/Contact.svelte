@@ -1,47 +1,38 @@
 <script>
 </script>
 
-<div id="contact">
-  <div class="contact-form grid p-7 rounded-xl shadow-xl">
+<div id="contact" class="flex w-full min-h-screen">
+  <div id="contact-form" class="grid gap-5 p-7 m-auto rounded-xl shadow-xl">
     <div class="contact-form-title">
       <div class="title-container">
         <div class="title-unsent title-exit-right">Get in Touch</div>
         <div class="title-sent title-exit-left">Message Sent. Thank You!</div>
       </div>
     </div>
-    <!-- <div class="line-load">
+    <div class="line-load">
       <div class="bar" />
-    </div> -->
+    </div>
     <div class="grid grid-cols-2 gap-10 w-full">
-      <input name="name" class="form-input" placeholder="Your name" />
-      <input name="email" class="form-input" type="email" placeholder="Your email" />
+      <input name="name" class="form-input" placeholder="Name" />
+      <input name="email" class="form-input" type="email" placeholder="Email" />
     </div>
-    <input name="phone" class="form-input" type="tel" placeholder="Your phone number" />
-    <textarea name="message" class="form-input" placeholder="Your message here..." />
-    <div class="wrap-form-btn">
-      <button type="submit" class="form-btn">
-        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path
-            fill="currentColor"
-            d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
-          />
-        </svg>
-        Submit
-      </button>
-    </div>
+    <input name="phone" class="form-input" type="tel" placeholder="Phone Number" />
+    <textarea name="message" class="form-input" placeholder="Message..." />
+    <button type="submit" class="form-btn m-auto w-20 rounded-2xl">
+      <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path
+          fill="currentColor"
+          d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
+        />
+      </svg>
+      Submit
+    </button>
   </div>
 </div>
 
 <style>
-  #contact {
-    width: 100%;
-    min-height: 100vh;
-    margin: auto;
-  }
-
   /*-------- [ Form ]*/
-  .contact-form {
-    max-width: 960px;
+  #contact-form {
     background: #fff;
   }
 
@@ -104,13 +95,6 @@
     font-size: 20px;
     line-height: 1.2;
     padding: 0 28px;
-
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-
-    margin-top: 10px;
   }
   .form-input:hover {
     background: #e0e0e0;
@@ -131,40 +115,17 @@
   }
 
   /*------- [ Form Button ]*/
-  .container-form-btn {
-    width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 5px;
-  }
-
-  .wrap-form-btn {
-    display: block;
-    position: relative;
-    z-index: 1;
-    border-radius: 2px;
-  }
 
   .form-btn {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
     padding: 0 20px;
     min-width: 150px;
     height: 62px;
     box-shadow: 0 5px #888;
 
-    border: none;
+    border: 1px solid #888;
     outline: none;
 
     font-size: 16px;
@@ -184,7 +145,7 @@
   }
   .btn-icon {
     fill: black;
-    height: 20%;
+    height: 16px;
     padding-right: 10px;
   }
 

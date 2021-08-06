@@ -1,71 +1,44 @@
 <script>
   import ColorSwitcher from './ColorSwitcher.svelte'
+
+  let showThemePicker = false
 </script>
 
 <div id="navbar">
-  <header class="navbar">
-    <a class="name" href="./"> Nicholas Baker </a>
-    <div class="grid grid-cols-3 gap-3">
+  <header class="bar themed">
+    <a id="name" href="./"> Nicholas Baker </a>
+    <div id="navigation" class="grid grid-cols-4 gap-3">
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
       <a href="https://github.com/ndbaker1" target="_blank">Github</a>
-      <ColorSwitcher />
+      <button on:click={() => (showThemePicker = !showThemePicker)}>Themes</button>
+      {#if showThemePicker}
+        <ColorSwitcher />
+      {/if}
     </div>
   </header>
-  <a style="display: none" class="" href="#navbar">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
-      <path d="M12 6H0l6-6z" />
-    </svg>
-  </a>
 </div>
 
 <style>
-  .navbar {
-    color: var(--text-color-primary);
+  .bar {
+    color: var(--text-color);
     z-index: 99;
-    position: absolute;
+    position: fixed;
     box-sizing: border-box;
     width: 100%;
     padding: 30px;
     display: flex;
     justify-content: space-between;
-  }
 
-  .navbar a {
-    letter-spacing: 0.1em;
-    transition: 0.3s;
     font-size: 1.6rem;
   }
-  .navbar a:hover {
-    color: var(--text-color-primary-hover);
-  }
 
-  /*  Jump to Top Button  */
-  .top-link {
-    box-shadow: 0 3px 5px #000000;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: inline-flex;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    margin: 0 -6em 3em 0;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    background-color: #f8f8f8;
-    z-index: 9999;
+  .bar a,
+  button {
+    transition: 300ms;
   }
-  .off-screen {
-    margin: 0 3em 3em 0;
-  }
-  .top-link svg {
-    fill: #000;
-    width: 24px;
-    height: 12px;
-  }
-  .top-link:hover {
-    background-color: rgb(192, 192, 192);
+  .bar a:hover,
+  button:hover {
+    color: var(--text-color-hover);
   }
 </style>
