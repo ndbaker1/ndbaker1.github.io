@@ -4,8 +4,10 @@
   import About from '../components/About.svelte'
   import Projects from '../components/Project.svelte'
   import { Theme } from '../services/theme.service'
+  import { KeyMaps } from '../services/keymap.service'
 
   onMount(() => Theme.refresh())
+  onMount(() => KeyMaps.init())
 </script>
 
 <Navbar />

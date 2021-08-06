@@ -6,14 +6,14 @@
 
 <div id="navbar">
   <header class="bar themed">
-    <a id="name" href="./"> Nicholas Baker </a>
+    <a id="name" href="./"> 🍣 Nick Baker </a>
     <div id="navigation" class="grid grid-cols-4 gap-3">
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
       <a href="https://github.com/ndbaker1" target="_blank">Github</a>
       <button on:click={() => (showThemePicker = !showThemePicker)}>Themes</button>
       {#if showThemePicker}
-        <ColorSwitcher />
+        <ColorSwitcher on:close-window={() => (showThemePicker = false)} />
       {/if}
     </div>
   </header>

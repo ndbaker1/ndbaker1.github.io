@@ -25,7 +25,7 @@ export class Theme {
 }
 
 export const themes = [
-  new Theme('basic-dark', {
+  new Theme('🍣 basic-dark', {
     'bg-color': '#2B2D42',
     'bg-gradient1': '#2B2D42',
     'bg-gradient2': '#1B1D32',
