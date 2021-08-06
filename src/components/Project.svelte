@@ -1,9 +1,7 @@
 <div class="project">
 	<div class="blur">
 		<div class="project-desc" />
-		<div class="github-link-box">
-			<a class="github-link" target="_blank" rel="noopener noreferrer" />
-		</div>
+		<div class="github-link-box" />
 	</div>
 </div>
 
