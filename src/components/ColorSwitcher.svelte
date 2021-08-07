@@ -11,10 +11,6 @@
 </div>
 
 <style>
-  #color-switcher {
-    border: 3px solid var(--text-color);
-    background-color: var(--bg-color);
-  }
   #color-switcher button:hover {
     color: var(--text-color-hover);
     transition: color 300ms;

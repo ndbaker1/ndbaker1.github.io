@@ -2,6 +2,7 @@
   import { onEscape } from '../actions/onEscape.action'
   import { clickOutside } from '../actions/outsideClick.action'
   import { createEventDispatcher } from 'svelte'
+  import { blur } from 'svelte/transition'
 
   const dispatch = createEventDispatcher()
 
@@ -10,10 +11,19 @@
 </script>
 
 <span
+  transition:blur
   use:closeOnOutsideClick
   use:cloneOnEscape
-  class="fixed top-1/2 left-1/2"
-  style="transform: translate(-50%, -50%);"
+  class="window fixed top-1/2 left-1/2"
 >
   <slot />
+  <p class="text-sm">Press Escape or Click Outside to close</p>
 </span>
+
+<style>
+  .window {
+    background-color: var(--bg-color);
+    transform: translate(-50%, -50%);
+    border: 3px solid var(--text-color);
+  }
+</style>

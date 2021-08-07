@@ -3,6 +3,7 @@
   import { onMount } from 'svelte'
   import { focusOnVisible } from '../actions/focusOnVisible.action'
   import { showThemePickerStore } from '../services/storage.service'
+  import { themes } from '../services/theme.service'
 
   onMount(() => {
     KeyMaps.register(':', () => {
@@ -23,10 +24,20 @@
 
   function execute() {
     showBar = false
-    switch (currentText.substring(1) as Command) {
+    const [command, ...args] = currentText.substring(1).split(' ')
+    switch (command as Command) {
       case 't':
       case 'theme':
-        showThemePickerStore.set(true)
+        {
+          if (args[0]) {
+            themes.find((theme) => theme.name == args[0]).setCurrent()
+          } else {
+            showThemePickerStore.set(true)
+          }
+        }
+        break
+      case 't': {
+      }
     }
   }
 </script>

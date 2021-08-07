@@ -1,10 +1,12 @@
 <script>
   import { onMount } from 'svelte'
+
+  import { Theme } from '../services/theme.service'
+  import { KeyMaps } from '../services/keymap.service'
+
   import Navbar from '../components/Navbar.svelte'
   import About from '../components/About.svelte'
   import Projects from '../components/Project.svelte'
-  import { Theme } from '../services/theme.service'
-  import { KeyMaps } from '../services/keymap.service'
   import CommandBar from '../components/CommandBar.svelte'
 
   onMount(() => {
@@ -13,11 +15,12 @@
   })
 </script>
 
+<CommandBar />
 <Navbar />
 <div class="max-w-screen-lg m-auto px-10">
   <About />
+  <Projects />
 </div>
-<CommandBar />
 <div class="page-loader" />
 
 <style>
