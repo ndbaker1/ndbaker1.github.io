@@ -16,7 +16,7 @@ jobs:
 
       - name: Install and Build
         env:
-          BASE_HREF: ${{ github.repository }}
+          BASE_HREF: personal-site
         run: |
           npm install
           npm run build
