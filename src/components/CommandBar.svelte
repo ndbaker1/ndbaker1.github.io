@@ -2,8 +2,13 @@
   import { KeyMaps } from '../services/keymap.service'
   import { onMount } from 'svelte'
   import { focusOnVisible } from '../actions/focusOnVisible.action'
-  import { showThemePickerStore } from '../services/storage.service'
-  import { themes } from '../services/theme.service'
+  import { CommandService } from '../services/command.service'
+  import { Commands } from '../services/commands/commandList'
+
+  let currentText = ''
+  let showBar = false
+
+  const commandService = new CommandService()
 
   onMount(() => {
     KeyMaps.register(':', () => {
@@ -15,31 +20,10 @@
     KeyMaps.register('Escape', () => {
       showBar = false
     })
+
+    commandService.registerCommand('theme', Commands.manageTheme)
+    commandService.registerCommand('t', Commands.manageTheme)
   })
-
-  type Command = 'theme' | 't'
-
-  let showBar = false
-  let currentText: string
-
-  function execute() {
-    showBar = false
-    const [command, ...args] = currentText.substring(1).split(' ')
-    switch (command as Command) {
-      case 't':
-      case 'theme':
-        {
-          if (args[0]) {
-            themes.find((theme) => theme.name == args[0]).setCurrent()
-          } else {
-            showThemePickerStore.set(true)
-          }
-        }
-        break
-      case 't': {
-      }
-    }
-  }
 </script>
 
 {#if showBar}
@@ -50,8 +34,10 @@
     use:focusOnVisible
     bind:value={currentText}
     on:keydown={(event) => {
-      if (event.key === 'Enter') execute()
-      else if (event.key === 'Backspace' && currentText.length == 1) showBar = false
+      if (event.key === 'Enter') {
+        commandService.execute(currentText)
+        showBar = false
+      } else if (event.key === 'Backspace' && currentText.length == 1) showBar = false
     }}
   />
 {/if}
@@ -60,7 +46,6 @@
   #command-bar {
     z-index: 99;
     border-bottom: 2px solid var(--button-bg-color);
-    text-align: left;
     color: var(--text-color);
     background-color: var(--bg-color);
     outline: none;

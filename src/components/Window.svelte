@@ -17,7 +17,7 @@
   class="window fixed top-1/2 left-1/2"
 >
   <slot />
-  <p class="text-sm">Press Escape or Click Outside to close</p>
+  <p class="text-sm">Press Escape or Click Outside to Close</p>
 </span>
 
 <style>

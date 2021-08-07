@@ -1,5 +1,5 @@
 <script>
-  import { showThemePickerStore } from '../services/storage.service'
+  import { showThemePickerStore } from '../services/globals.service'
 
   import ColorSwitcher from './ColorSwitcher.svelte'
   import Window from './Window.svelte'
@@ -37,12 +37,10 @@
     font-size: 1.6rem;
   }
 
-  .bar a,
-  button {
+  .bar a {
     transition: 300ms;
   }
-  .bar a:hover,
-  button:hover {
+  .bar a:hover {
     color: var(--text-color-hover);
   }
 </style>
