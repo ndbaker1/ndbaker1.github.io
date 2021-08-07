@@ -11,15 +11,12 @@
 <div id="navbar">
   <header class="bar themed">
     <a id="name" href="./"> 🍣 Nick Baker </a>
-    <div id="navigation" class="grid grid-cols-2 gap-3">
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-      {#if showThemePicker}
-        <Window on:close-window={() => showThemePickerStore.set(false)}>
-          <ColorSwitcher />
-        </Window>
-      {/if}
-    </div>
+
+    {#if showThemePicker}
+      <Window on:close-window={() => showThemePickerStore.set(false)}>
+        <ColorSwitcher />
+      </Window>
+    {/if}
   </header>
 </div>
 
@@ -29,7 +26,6 @@
     z-index: 99;
     position: fixed;
     box-sizing: border-box;
-    width: 100%;
     padding: 30px;
     display: flex;
     justify-content: space-between;

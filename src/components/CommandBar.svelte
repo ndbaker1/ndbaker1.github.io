@@ -1,6 +1,8 @@
 <script lang="ts">
-  import { KeyMaps } from '../services/keymap.service'
   import { onMount } from 'svelte'
+  import { slide } from 'svelte/transition'
+
+  import { KeyMaps } from '../services/keymap.service'
   import { focusOnVisible } from '../actions/focusOnVisible.action'
   import { CommandService } from '../services/command.service'
   import { Commands } from '../services/commands/commandList'
@@ -12,19 +14,33 @@
 
   const commandService = new CommandService()
 
-  const openBar = () => {
-    if (!showBar) {
-      showBar = true
-      currentText = ''
-    }
+  const barHandler = {
+    open: () => {
+      if (!showBar) {
+        showBar = true
+        currentText = ''
+      }
+    },
+    close: () => (showBar = false),
   }
-  const closeBar = () => (showBar = false)
 
-  const outsideClickClose = clickOutside(closeBar)
+  const outsideClickClose = clickOutside(barHandler.close)
+
+  const keyHandlers = {
+    keyup: (event: KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        commandService.execute(currentText)
+        barHandler.close()
+      }
+    },
+    keydown: (event: KeyboardEvent) => {
+      if (event.key === 'Backspace' && currentText.length == 0) barHandler.close()
+    },
+  }
 
   onMount(() => {
-    KeyMaps.register([':', '/'], openBar)
-    KeyMaps.register(['Escape'], closeBar)
+    KeyMaps.register([':', '/'], barHandler.open)
+    KeyMaps.register(['Escape'], barHandler.close)
 
     commandService.register(/^:(theme|t)$/i, Commands.manageTheme)
     commandService.register(/^:go$/i, Commands.navigate)
@@ -40,18 +56,12 @@
     id="command-bar"
     class="fixed left-0 top-0 w-full transition-all text-xl"
     autocomplete="off"
+    transition:slide
     use:focusOnVisible
     use:outsideClickClose
     bind:value={currentText}
-    on:keydown={(event) => {
-      if (event.key === 'Enter') {
-        commandService.execute(currentText)
-        closeBar()
-      }
-    }}
-    on:keyup={(event) => {
-      if (event.key === 'Backspace' && currentText.length == 0) closeBar()
-    }}
+    on:keydown={keyHandlers.keydown}
+    on:keyup={keyHandlers.keyup}
   />
 {/if}
 
