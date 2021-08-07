@@ -8,7 +8,15 @@
   import { Commands } from '../services/commands/commandList'
   import { clickOutside } from '../actions/outsideClick.action'
   import { Links } from '../services/globals.service'
+  import Window from './Window.svelte'
 
+  let showHelp = false
+  const commandStarters = [':']
+  const commandList = [
+    { value: 'theme [ name ]', desc: 'change to another theme' },
+    { value: 'github', desc: 'open github in a new tab' },
+    { value: 'resume', desc: 'open resume in a new tab' },
+  ]
   let currentText = ''
   let showBar = false
 
@@ -31,26 +39,41 @@
       if (event.key === 'Enter') {
         commandService.execute(currentText)
         barHandler.close()
+      } else if (!commandStarters.some((c) => currentText.startsWith(c))) {
+        barHandler.close()
       }
-    },
-    keydown: (event: KeyboardEvent) => {
-      if (event.key === 'Backspace' && currentText.length == 0) barHandler.close()
     },
   }
 
   onMount(() => {
-    KeyMaps.register([':', '/'], barHandler.open)
+    KeyMaps.register(commandStarters, barHandler.open)
     KeyMaps.register(['Escape'], barHandler.close)
 
+    /**
+     * Declaration of Commands
+     */
+    commandService.register(/^:(help|h|\?)$/i, () => (showHelp = true))
+
     commandService.register(/^:(theme|t)$/i, Commands.manageTheme)
-    commandService.register(/^:go$/i, Commands.navigate)
-    commandService.register(/^:(scroll|s)$/i, Commands.scroll)
+    commandService.register(/^:goto$/i, Commands.openNavigator)
+    commandService.register(/^:\d$/i, Commands.navigate, (line) => [line, line.substr(1)])
 
     commandService.register(/^:github$/i, () => window.open(Links.github))
     commandService.register(/^:resume$/i, () => window.open(Links.resume))
   })
 </script>
 
+{#if showHelp}
+  <Window on:close-window={() => (showHelp = false)}>
+    <div class="themed p-2 text-left text-xl">
+      {#each commandList as command}
+        <p>:{command.value} <br /> -- {command.desc}</p>
+      {/each}
+      <br />
+      <p>. . . and secret commands</p>
+    </div>
+  </Window>
+{/if}
 {#if showBar}
   <input
     id="command-bar"
@@ -60,7 +83,6 @@
     use:focusOnVisible
     use:outsideClickClose
     bind:value={currentText}
-    on:keydown={keyHandlers.keydown}
     on:keyup={keyHandlers.keyup}
   />
 {/if}

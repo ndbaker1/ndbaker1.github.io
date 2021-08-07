@@ -1,4 +1,5 @@
-import { showThemePickerStore } from "../globals.service"
+import { showNavigatorStore, showThemePickerStore } from "../globals.service"
+import { getSections } from "../section-navigation.service"
 import { themes } from "../theme.service"
 
 export const Commands = {
@@ -10,10 +11,10 @@ export const Commands = {
       showThemePickerStore.set(true)
     }
   },
+  openNavigator: (): void => {
+    showNavigatorStore.set(true)
+  },
   navigate: (args: string[]): void => {
-    location.href = "#" + (args[0] || '')
-  },
-  scroll: (args: string[]): void => {
-    scrollBy({ top: +args[0] * 200, behavior: 'smooth' })
-  },
+    getSections()[+args[0] - 1]?.scrollIntoView({ behavior: 'smooth' })
+  }
 }

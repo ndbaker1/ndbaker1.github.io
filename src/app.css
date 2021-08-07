@@ -30,11 +30,16 @@ a {
   color: var(--text-color);
 }
 
-button.themed {
+button.themed:hover {
+  color: var(--text-color-hover);
+  transition: color 300ms;
+}
+
+button.button.themed {
   transition: background-color 300ms, box-shadow 300ms;
   color: var(--button-text-color);
   background-color: var(--button-bg-color);
 }
-button.themed:hover {
+button.button.themed:hover {
   background-color: var(--button-bg-color-hover);
 }

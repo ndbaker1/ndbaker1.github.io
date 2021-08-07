@@ -10,3 +10,5 @@ export const Github = {
 }
 
 export const showThemePickerStore = writable(false)
+
+export const showNavigatorStore = writable(false)

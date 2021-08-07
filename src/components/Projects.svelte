@@ -5,16 +5,28 @@
   let projects = []
   onMount(async () => {
     projects = await Github.getUserRepos()
+    projects = projects.filter((p) => p.description)
   })
 </script>
 
-<div id="projects" class="grid grid-cols-2 gap-10">
-  {#each projects as project}
-    <div class="project-card shadow-xl">
-      {project.full_name}
-    </div>
-  {/each}
-</div>
+<section id="projects" class="themed">
+  <p class="text-4xl mb-5">Projects</p>
+  <div id="project-gallery" class="grid grid-cols-2 gap-10">
+    {#each projects as project}
+      <a href={project.html_url} target="_blank" rel="noopener noreferrer">
+        <button class="button themed project-card w-full shadow-xl p-5 rounded-lg">
+          <h1 class="capitalize">
+            {project.name}
+          </h1>
+          <hr />
+          <p>
+            {project.description}
+          </p>
+        </button>
+      </a>
+    {/each}
+  </div>
+</section>
 
 <style>
   .project-card {

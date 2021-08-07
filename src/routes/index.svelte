@@ -8,6 +8,7 @@
   import About from '../components/About.svelte'
   import Projects from '../components/Projects.svelte'
   import CommandBar from '../components/CommandBar.svelte'
+  import NavigationWindow from '../components/NavigationWindow.svelte'
 
   onMount(() => {
     Theme.refresh()
@@ -22,6 +23,8 @@
   <Projects />
 </div>
 <div class="page-loader" />
+
+<NavigationWindow />
 
 <style>
   .page-loader {

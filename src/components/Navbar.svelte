@@ -8,16 +8,15 @@
   showThemePickerStore.subscribe((show) => (showThemePicker = show))
 </script>
 
-<div id="navbar">
+<div id="navbar" class="themed text-2xl">
   <header class="bar themed">
     <a id="name" href="./"> 🍣 Nick Baker </a>
-
-    {#if showThemePicker}
-      <Window on:close-window={() => showThemePickerStore.set(false)}>
-        <ColorSwitcher />
-      </Window>
-    {/if}
   </header>
+  {#if showThemePicker}
+    <Window on:close-window={() => showThemePickerStore.set(false)}>
+      <ColorSwitcher />
+    </Window>
+  {/if}
 </div>
 
 <style>
@@ -29,8 +28,6 @@
     padding: 30px;
     display: flex;
     justify-content: space-between;
-
-    font-size: 1.6rem;
   }
 
   .bar a {

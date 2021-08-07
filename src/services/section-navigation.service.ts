@@ -1,0 +1,1 @@
+export const getSections = (): HTMLElement[] => Array.from(document.querySelectorAll('section'))

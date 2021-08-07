@@ -14,7 +14,7 @@
   transition:blur
   use:closeOnOutsideClick
   use:cloneOnEscape
-  class="window fixed top-1/2 left-1/2"
+  class="themed window p-1 fixed top-1/2 left-1/2"
 >
   <slot />
   <p class="text-sm">Press Escape or Click Outside to Close</p>
@@ -25,5 +25,7 @@
     background-color: var(--bg-color);
     transform: translate(-50%, -50%);
     border: 3px solid var(--text-color);
+    max-height: 80vh;
+    overflow: auto;
   }
 </style>
