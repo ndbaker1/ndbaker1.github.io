@@ -6,44 +6,44 @@
 	<link rel="icon" href="favicon.ico" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Nicholas Baker</title>
+	
 
+		
 
+		<link rel="modulepreload" href="/./_app/start-035ca752.js">
+		<link rel="modulepreload" href="/./_app/chunks/vendor-deba61ad.js">
+		<link rel="modulepreload" href="/./_app/pages/__layout.svelte-042cb907.js">
+		<link rel="modulepreload" href="/./_app/pages/index.svelte-3fc7195b.js">
+		<link rel="stylesheet" href="/./_app/assets/start-0826e215.css">
+		<link rel="stylesheet" href="/./_app/assets/pages/__layout.svelte-185a8643.css">
+		<link rel="stylesheet" href="/./_app/assets/pages/index.svelte-c71a4f6b.css">
 
-
-	<link rel="modulepreload" href="_app/start-035ca752.js">
-	<link rel="modulepreload" href="_app/chunks/vendor-deba61ad.js">
-	<link rel="modulepreload" href="_app/pages/__layout.svelte-042cb907.js">
-	<link rel="modulepreload" href="_app/pages/index.svelte-3fc7195b.js">
-	<link rel="stylesheet" href="_app/assets/start-0826e215.css">
-	<link rel="stylesheet" href="_app/assets/pages/__layout.svelte-185a8643.css">
-	<link rel="stylesheet" href="_app/assets/pages/index.svelte-c71a4f6b.css">
-
-	<script type="module">
-		import { start } from "_app/start-035ca752.js";
-		start({
-			target: document.querySelector("#svelte"),
-			paths: { "base": "", "assets": "" },
-			session: {},
-			host: location.host,
-			route: true,
-			spa: false,
-			trailing_slash: "never",
-			hydrate: {
-				status: 200,
-				error: null,
-				nodes: [
-					import("_app/pages/__layout.svelte-042cb907.js"),
-					import("_app/pages/index.svelte-3fc7195b.js")
-				],
-				page: {
-					host: location.host, // TODO this is redundant
-					path: "/",
-					query: new URLSearchParams(""),
-					params: {}
+		<script type="module">
+			import { start } from "/./_app/start-035ca752.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":"/."},
+				session: {},
+				host: location.host,
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/./_app/pages/__layout.svelte-042cb907.js"),
+						import("/./_app/pages/index.svelte-3fc7195b.js")
+					],
+					page: {
+						host: location.host, // TODO this is redundant
+						path: "/",
+						query: new URLSearchParams(""),
+						params: {}
+					}
 				}
-			}
-		});
-	</script>
+			});
+		</script>
 </head>
 
 <body>
@@ -52,49 +52,31 @@
 
 
 
-		<div id="navbar" class="themed text-2xl">
-			<header class="bar themed svelte-cmas1c"><a id="name" href="./" class="svelte-cmas1c">🍣 Nick Baker </a></header>
-
-		</div>
-		<div class="max-w-screen-lg m-auto px-10">
-			<section id="about" class="themed h-screen flex align-center justify-center">
-				<div class="flex flex-col justify-center">
-					<div class="grid gap-5">
-						<div>
-							<h2 class="text-4xl my-4">About Me</h2>
-							<p class="text-xl"><i>Pursuing a Computer Science Degree at the University of Texas at Dallas</i></p>
-						</div>
-						<div>
-							<h2 class="text-4xl my-4">Skills / Interests</h2>
-							<p class="text-xl">Full-Stack<br>
-								Machine Learning<br>
-								Cloud Computing/Architecture<br></p>
-						</div>
-						<div class="grid grid-cols-2 gap-5"><a href="https://github.com/ndbaker1" target="_blank"
-								rel="noopener noreferrer"><button
-									class="button themed w-full rounded-full py-3 px-6 shadow-md hover:shadow-lg">GITHUB
-								</button></a>
-							<a href="https://drive.google.com/file/d/1iIP7YMc61-OE1KJiTJB54PdTk87TsPLX/view" target="_blank"
-								rel="noopener noreferrer"><button
-									class="button themed w-full rounded-full py-3 px-6 shadow-md hover:shadow-lg">RESUME
-								</button></a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section id="projects" class="themed">
-				<p class="text-4xl mb-5">Projects</p>
-				<div id="project-gallery" class="grid grid-cols-2 gap-10"></div>
-			</section>
-		</div>
-		<div class="page-loader svelte-g2yttn"></div>
+<div id="navbar" class="themed text-2xl"><header class="bar themed svelte-cmas1c"><a id="name" href="./" class="svelte-cmas1c">🍣 Nick Baker </a></header>
+  
+</div>
+<div class="max-w-screen-lg m-auto px-10"><section id="about" class="themed h-screen flex align-center justify-center"><div class="flex flex-col justify-center"><div class="grid gap-5"><div><h2 class="text-4xl my-4">About Me</h2>
+        <p class="text-xl"><i>Pursuing a Computer Science Degree at the University of Texas at Dallas</i></p></div>
+      <div><h2 class="text-4xl my-4">Skills / Interests</h2>
+        <p class="text-xl">Full-Stack<br>
+          Machine Learning<br>
+          Cloud Computing/Architecture<br></p></div>
+      <div class="grid grid-cols-2 gap-5"><a href="https://github.com/ndbaker1" target="_blank" rel="noopener noreferrer"><button class="button themed w-full rounded-full py-3 px-6 shadow-md hover:shadow-lg">GITHUB
+          </button></a>
+        <a href="https://drive.google.com/file/d/1iIP7YMc61-OE1KJiTJB54PdTk87TsPLX/view" target="_blank" rel="noopener noreferrer"><button class="button themed w-full rounded-full py-3 px-6 shadow-md hover:shadow-lg">RESUME
+          </button></a></div></div></div>
+</section>
+  <section id="projects" class="themed"><p class="text-4xl mb-5">Projects</p>
+  <div id="project-gallery" class="grid grid-cols-2 gap-10"></div>
+</section></div>
+<div class="page-loader svelte-g2yttn"></div>
 
 
 
 
 
-
-	</div>
+	
+</div>
 </body>
 
 </html>
