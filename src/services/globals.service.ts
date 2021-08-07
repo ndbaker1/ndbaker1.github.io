@@ -2,7 +2,8 @@ import { writable } from "svelte/store"
 
 export const Links = {
   github: 'https://github.com/ndbaker1',
-  resume: 'https://drive.google.com/file/d/1iIP7YMc61-OE1KJiTJB54PdTk87TsPLX/view'
+  resume: 'https://drive.google.com/file/d/1iIP7YMc61-OE1KJiTJB54PdTk87TsPLX/view',
+  animeList: 'https://drive.google.com/file/d/1cmAtaKf69lU6dbBZfXnjsK_MecVnA46K/view',
 }
 
 export const Github = {

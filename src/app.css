@@ -43,3 +43,15 @@ button.button.themed {
 button.button.themed:hover {
   background-color: var(--button-bg-color-hover);
 }
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--text-color);
+  border: 4px solid var(--bg-color);
+  border-radius: 10px;
+}

@@ -62,6 +62,7 @@
 
     commandService.register(/^:github$/i, () => window.open(Links.github))
     commandService.register(/^:resume$/i, () => window.open(Links.resume))
+    commandService.register(/^:anime$/i, () => window.open(Links.animeList))
   })
 </script>
 
