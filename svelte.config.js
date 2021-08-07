@@ -6,9 +6,12 @@ const config = {
     "postcss": true
   })],
   kit: {
-    adapter: staticAdapter(),
     // hydrate the <div id="svelte"> element in src/app.html
-    target: '#svelte'
+    target: '#svelte',
+    paths: {
+      base: process.env.BASE_HREF ? ('/' + process.env.BASE_HREF) : ''
+    },
+    adapter: staticAdapter(),
   }
 };
 
