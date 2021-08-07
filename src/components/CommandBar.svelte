@@ -10,19 +10,20 @@
 
   const commandService = new CommandService()
 
-  onMount(() => {
-    KeyMaps.register(':', () => {
-      if (!showBar) {
-        showBar = true
-        currentText = ''
-      }
-    })
-    KeyMaps.register('Escape', () => {
-      showBar = false
-    })
+  const openBar = () => {
+    if (!showBar) {
+      showBar = true
+      currentText = ''
+    }
+  }
+  const closeBar = () => (showBar = false)
 
-    commandService.registerCommands(['theme', 't'], Commands.manageTheme)
-    commandService.registerCommands(['go'], Commands.navigate)
+  onMount(() => {
+    KeyMaps.register(':', openBar)
+    KeyMaps.register('Escape', closeBar)
+
+    commandService.register(['theme', 't'], Commands.manageTheme)
+    commandService.register(['go'], Commands.navigate)
   })
 </script>
 
@@ -36,8 +37,11 @@
     on:keydown={(event) => {
       if (event.key === 'Enter') {
         commandService.execute(currentText)
-        showBar = false
-      } else if (event.key === 'Backspace' && currentText.length == 1) showBar = false
+        closeBar()
+      }
+    }}
+    on:keyup={(event) => {
+      if (event.key === 'Backspace' && currentText.length == 0) closeBar()
     }}
   />
 {/if}
