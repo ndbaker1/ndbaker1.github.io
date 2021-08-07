@@ -35,7 +35,7 @@ export const themes = [
     "button-bg-color": '#EF626C',
     "button-bg-color-hover": '#EF233C',
   }),
-  new Theme('dark-water', {
+  new Theme('dark', {
     'bg-color': '#2B2D42',
     'bg-gradient1': '#2B2D42',
     'bg-gradient2': '#1B1D32',
@@ -45,7 +45,7 @@ export const themes = [
     "button-bg-color": '#EF233C',
     "button-bg-color-hover": '#D90429',
   }),
-  new Theme('beige', {
+  new Theme('beige-purple', {
     'bg-color': '#EFF8E2',
     'bg-gradient1': '#EFF8E2',
     'bg-gradient2': '#CECFC7',

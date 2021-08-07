@@ -3,32 +3,24 @@
   import { showNavigatorStore } from '../services/globals.service'
 
   import Window from './Window.svelte'
-  import { onMount } from 'svelte'
 
-  const makeSelection = (event: KeyboardEvent) => {
-    getSections()[+event.key - 1].scrollIntoView({ behavior: 'smooth' })
+  const jumpToSection = (section: HTMLElement) => {
+    section.scrollIntoView({ behavior: 'smooth' })
     showNavigatorStore.set(false)
   }
 
   let showNavigator: boolean = false
-
-  onMount(() => {
-    showNavigatorStore.subscribe((show) => {
-      showNavigator = show
-      if (showNavigator) addEventListener('keypress', makeSelection)
-      else removeEventListener('keypress', makeSelection)
-    })
-  })
+  showNavigatorStore.subscribe((show) => (showNavigator = show))
 </script>
 
 {#if showNavigator}
   <div id="navigator" class="themed text-2xl">
     <Window on:close-window={() => showNavigatorStore.set(false)}>
-      <div class="grid">
+      <div class="grid text-left">
         {#each getSections() as section, i}
-          <p>
+          <button class="themed" on:click={() => jumpToSection(section)}>
             {i + 1} - {section.id}
-          </p>
+          </button>
         {/each}
       </div>
     </Window>
