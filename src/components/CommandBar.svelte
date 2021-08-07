@@ -4,6 +4,8 @@
   import { focusOnVisible } from '../actions/focusOnVisible.action'
   import { CommandService } from '../services/command.service'
   import { Commands } from '../services/commands/commandList'
+  import { clickOutside } from '../actions/outsideClick.action'
+  import { Links } from '../services/globals.service'
 
   let currentText = ''
   let showBar = false
@@ -18,12 +20,18 @@
   }
   const closeBar = () => (showBar = false)
 
+  const outsideClickClose = clickOutside(closeBar)
+
   onMount(() => {
-    KeyMaps.register([':'], openBar)
+    KeyMaps.register([':', '/'], openBar)
     KeyMaps.register(['Escape'], closeBar)
 
-    commandService.register(['theme', 't'], Commands.manageTheme)
-    commandService.register(['go'], Commands.navigate)
+    commandService.register(/^:(theme|t)$/i, Commands.manageTheme)
+    commandService.register(/^:go$/i, Commands.navigate)
+    commandService.register(/^:(scroll|s)$/i, Commands.scroll)
+
+    commandService.register(/^:github$/i, () => window.open(Links.github))
+    commandService.register(/^:resume$/i, () => window.open(Links.resume))
   })
 </script>
 
@@ -33,6 +41,7 @@
     class="fixed left-0 top-0 w-full transition-all text-xl"
     autocomplete="off"
     use:focusOnVisible
+    use:outsideClickClose
     bind:value={currentText}
     on:keydown={(event) => {
       if (event.key === 'Enter') {

@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { Links } from '../services/globals.service'
+</script>
+
 <div id="about" class="themed h-screen flex align-center justify-center">
   <div class="flex flex-col justify-center">
     <div class="grid gap-5">
@@ -16,16 +20,12 @@
         </p>
       </div>
       <div class="grid grid-cols-2 gap-5">
-        <a href="https://github.com/ndbaker1" target="_blank" rel="noopener noreferrer">
+        <a href={Links.github} target="_blank" rel="noopener noreferrer">
           <button class="themed w-full rounded-full py-3 px-6 shadow-md hover:shadow-lg">
             GITHUB
           </button>
         </a>
-        <a
-          href="https://drive.google.com/file/d/1iIP7YMc61-OE1KJiTJB54PdTk87TsPLX/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={Links.resume} target="_blank" rel="noopener noreferrer">
           <button class="themed w-full rounded-full py-3 px-6 shadow-md hover:shadow-lg">
             RESUME
           </button>

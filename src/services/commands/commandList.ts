@@ -13,4 +13,7 @@ export const Commands = {
   navigate: (args: string[]): void => {
     location.href = "#" + (args[0] || '')
   },
+  scroll: (args: string[]): void => {
+    scrollBy({ top: +args[0] * 200, behavior: 'smooth' })
+  },
 }
