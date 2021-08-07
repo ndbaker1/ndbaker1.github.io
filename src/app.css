@@ -26,21 +26,31 @@ a {
   box-sizing: border-box;
 }
 
+/*
+  Default Text Color follows Theme
+*/
 .themed {
   color: var(--text-color);
 }
 
+/*
+  Buttons that just have a different hover color
+*/
 button.themed:hover {
   color: var(--text-color-hover);
   transition: color 300ms;
 }
 
+/*
+  Buttons that have background color and contrast with the main background
+*/
 button.button.themed {
-  transition: background-color 300ms, box-shadow 300ms;
+  transition: background-color 300ms, box-shadow 300ms, transform 300ms;
   color: var(--button-text-color);
   background-color: var(--button-bg-color);
 }
 button.button.themed:hover {
+  transform: translateY(-5px);
   background-color: var(--button-bg-color-hover);
 }
 

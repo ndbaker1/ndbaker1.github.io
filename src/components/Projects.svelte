@@ -34,11 +34,4 @@
     color: var(--text-color);
     background-color: var(--button-bg-color);
   }
-
-  @media screen and (max-width: 900px) {
-    /* one project-card per row if the screen is too small */
-    .project-card {
-      width: 100%;
-    }
-  }
 </style>
