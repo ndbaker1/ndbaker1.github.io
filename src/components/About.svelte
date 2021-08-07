@@ -10,9 +10,9 @@
       <div>
         <h2 class="text-4xl my-4">Skills / Interests</h2>
         <p class="text-xl">
-          Full-Stack & Desktop Development<br />
-          Machine Learning & Automation<br />
-          Cloud Development<br />
+          Full-Stack<br />
+          Machine Learning<br />
+          Cloud Computing/Architecture<br />
         </p>
       </div>
       <div class="grid grid-cols-2 gap-5">

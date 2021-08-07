@@ -22,7 +22,6 @@ a {
 }
 
 * {
-  transition: background-color 500ms;
   font-family: "Dosis";
   box-sizing: border-box;
 }
@@ -32,6 +31,7 @@ a {
 }
 
 button.themed {
+  transition: background-color 300ms, box-shadow 300ms;
   color: var(--button-text-color);
   background-color: var(--button-bg-color);
 }

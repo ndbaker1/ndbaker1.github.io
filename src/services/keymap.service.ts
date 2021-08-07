@@ -5,7 +5,7 @@ export class KeyMaps {
   }
 
   static register(key: string, callback: () => void): void {
-    addEventListener('keypress', event => {
+    addEventListener('keydown', event => {
       if (event.key == key) callback()
     })
   }

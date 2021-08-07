@@ -5,16 +5,19 @@
   import Projects from '../components/Project.svelte'
   import { Theme } from '../services/theme.service'
   import { KeyMaps } from '../services/keymap.service'
+  import CommandBar from '../components/CommandBar.svelte'
 
-  onMount(() => Theme.refresh())
-  onMount(() => KeyMaps.init())
+  onMount(() => {
+    Theme.refresh()
+    KeyMaps.init()
+  })
 </script>
 
 <Navbar />
-<div class="px-40">
+<div class="max-w-screen-lg m-auto px-10">
   <About />
-  <Projects />
 </div>
+<CommandBar />
 <div class="page-loader" />
 
 <style>

@@ -1,19 +1,23 @@
 <script>
-  import ColorSwitcher from './ColorSwitcher.svelte'
+  import { showThemePickerStore } from '../services/storage.service'
 
-  let showThemePicker = false
+  import ColorSwitcher from './ColorSwitcher.svelte'
+  import Window from './Window.svelte'
+
+  let showThemePicker
+  showThemePickerStore.subscribe((show) => (showThemePicker = show))
 </script>
 
 <div id="navbar">
   <header class="bar themed">
     <a id="name" href="./"> 🍣 Nick Baker </a>
-    <div id="navigation" class="grid grid-cols-4 gap-3">
+    <div id="navigation" class="grid grid-cols-2 gap-3">
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
-      <a href="https://github.com/ndbaker1" target="_blank">Github</a>
-      <button on:click={() => (showThemePicker = !showThemePicker)}>Themes</button>
       {#if showThemePicker}
-        <ColorSwitcher on:close-window={() => (showThemePicker = false)} />
+        <Window on:close-window={() => showThemePickerStore.set(false)}>
+          <ColorSwitcher />
+        </Window>
       {/if}
     </div>
   </header>
