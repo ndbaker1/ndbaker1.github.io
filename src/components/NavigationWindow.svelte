@@ -3,6 +3,7 @@
   import { showNavigatorStore } from '../services/globals.service'
 
   import Window from './Window.svelte'
+  import { onMount } from 'svelte'
 
   const makeSelection = (event: KeyboardEvent) => {
     getSections()[+event.key - 1].scrollIntoView({ behavior: 'smooth' })
@@ -10,10 +11,13 @@
   }
 
   let showNavigator: boolean = false
-  showNavigatorStore.subscribe((show) => {
-    showNavigator = show
-    if (showNavigator) addEventListener('keypress', makeSelection)
-    else removeEventListener('keypress', makeSelection)
+
+  onMount(() => {
+    showNavigatorStore.subscribe((show) => {
+      showNavigator = show
+      if (showNavigator) addEventListener('keypress', makeSelection)
+      else removeEventListener('keypress', makeSelection)
+    })
   })
 </script>
 
