@@ -3,7 +3,7 @@ export class CommandService {
 
   preparser = (s: string): string => s.substring(1)
 
-  registerCommand(commands: string[], effect: (args: string[]) => void): void {
+  registerCommands(commands: string[], effect: (args: string[]) => void): void {
     commands.forEach(command => this.commandSet.set(command, effect))
   }
 

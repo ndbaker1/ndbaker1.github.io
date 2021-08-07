@@ -21,8 +21,8 @@
       showBar = false
     })
 
-    commandService.registerCommand(['theme', 't'], Commands.manageTheme)
-    commandService.registerCommand(['go'], Commands.navigate)
+    commandService.registerCommands(['theme', 't'], Commands.manageTheme)
+    commandService.registerCommands(['go'], Commands.navigate)
   })
 </script>
 
