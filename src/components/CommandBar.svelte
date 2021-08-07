@@ -19,8 +19,8 @@
   const closeBar = () => (showBar = false)
 
   onMount(() => {
-    KeyMaps.register(':', openBar)
-    KeyMaps.register('Escape', closeBar)
+    KeyMaps.register([':'], openBar)
+    KeyMaps.register(['Escape'], closeBar)
 
     commandService.register(['theme', 't'], Commands.manageTheme)
     commandService.register(['go'], Commands.navigate)
