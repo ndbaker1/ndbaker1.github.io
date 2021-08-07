@@ -4,5 +4,5 @@ export const Storage = {
   },
   set(key: string, value: string): void {
     sessionStorage.setItem(key, value)
-  }
+  },
 }

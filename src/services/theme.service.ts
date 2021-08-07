@@ -1,3 +1,5 @@
+import { Storage } from "./persistentStorage.service"
+
 type ColorVariables =
   | 'bg-color'
   | 'bg-gradient1'
@@ -14,10 +16,11 @@ export class Theme {
     Object.entries(this.colors).forEach(([name, value]) => {
       document.documentElement.style.setProperty('--' + name, value)
     })
+    Storage.set('theme', this.name)
   }
 
   static refresh(): void {
-    themes[0].setCurrent()
+    (themes.find(t => t.name == Storage.get('theme')) || themes[0]).setCurrent()
   }
 }
 
@@ -42,7 +45,7 @@ export const themes = [
     "button-bg-color": '#EF233C',
     "button-bg-color-hover": '#D90429',
   }),
-  new Theme('Beige', {
+  new Theme('beige', {
     'bg-color': '#EFF8E2',
     'bg-gradient1': '#EFF8E2',
     'bg-gradient2': '#CECFC7',

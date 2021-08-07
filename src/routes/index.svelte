@@ -6,7 +6,7 @@
 
   import Navbar from '../components/Navbar.svelte'
   import About from '../components/About.svelte'
-  import Projects from '../components/Project.svelte'
+  import Projects from '../components/Projects.svelte'
   import CommandBar from '../components/CommandBar.svelte'
 
   onMount(() => {
