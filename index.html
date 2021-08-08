@@ -10,16 +10,16 @@
 
 		
 
-		<link rel="modulepreload" href="/personal-site/_app/start-49c8584b.js">
+		<link rel="modulepreload" href="/personal-site/_app/start-652ed95e.js">
 		<link rel="modulepreload" href="/personal-site/_app/chunks/vendor-571751b5.js">
-		<link rel="modulepreload" href="/personal-site/_app/pages/__layout.svelte-6dc78c48.js">
-		<link rel="modulepreload" href="/personal-site/_app/pages/index.svelte-db11606f.js">
+		<link rel="modulepreload" href="/personal-site/_app/pages/__layout.svelte-ef81e0fb.js">
+		<link rel="modulepreload" href="/personal-site/_app/pages/index.svelte-81df7246.js">
 		<link rel="stylesheet" href="/personal-site/_app/assets/start-0826e215.css">
-		<link rel="stylesheet" href="/personal-site/_app/assets/pages/__layout.svelte-8453b375.css">
-		<link rel="stylesheet" href="/personal-site/_app/assets/pages/index.svelte-297c661e.css">
+		<link rel="stylesheet" href="/personal-site/_app/assets/pages/__layout.svelte-ddc5a3d5.css">
+		<link rel="stylesheet" href="/personal-site/_app/assets/pages/index.svelte-86226ee4.css">
 
 		<script type="module">
-			import { start } from "/personal-site/_app/start-49c8584b.js";
+			import { start } from "/personal-site/_app/start-652ed95e.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/personal-site","assets":"/personal-site"},
@@ -32,8 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/personal-site/_app/pages/__layout.svelte-6dc78c48.js"),
-						import("/personal-site/_app/pages/index.svelte-db11606f.js")
+						import("/personal-site/_app/pages/__layout.svelte-ef81e0fb.js"),
+						import("/personal-site/_app/pages/index.svelte-81df7246.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -57,12 +57,17 @@
 <div id="navbar" class="themed">
   
 </div>
-<div class="max-w-screen-lg m-auto px-10"><section id="about" class="themed h-screen flex align-center justify-center"><div class="flex flex-col justify-center"><div class="grid gap-5"><div><h2 class="text-4xl my-4">About Me</h2>
-        <p class="text-xl"><i>Pursuing a Computer Science Degree at the University of Texas at Dallas</i></p></div>
-      <div><h2 class="text-4xl my-4">Skills / Interests</h2>
-        <p class="text-xl">Full-Stack<br>
-          Machine Learning<br>
-          Cloud Computing/Architecture<br></p></div>
+<div class="max-w-screen-lg m-auto px-10"><section id="about" class="themed h-screen flex align-center justify-center"><div class="flex flex-col justify-center"><div class="grid gap-5"><div><h2 class="text-3xl my-4">About Me</h2>
+        <p class="text-xl">Pursuing a Computer Science Degree at the <b>University of Texas at Dallas</b></p></div>
+      <div><h2 class="text-3xl my-4">Skills / Interests</h2>
+        <div class="grid gap-2 text-left"><div class="grid grid-cols-2"><h2 class="skill-header svelte-1ieo7fk">Languages</h2>
+            <div class="svelte-1ieo7fk">TypeScript/JavaScript, Kotlin/Java, Rust, Python, SQL, Bash</div></div>
+          <div class="grid grid-cols-2"><h2 class="skill-header svelte-1ieo7fk">Frameworks</h2>
+            <div class="svelte-1ieo7fk">React, Angular, Svelte, Exress.js, Spring</div></div>
+          <div class="grid grid-cols-2"><h2 class="skill-header svelte-1ieo7fk">Tools &amp; Providers</h2>
+            <div class="svelte-1ieo7fk">Github/Gitlab/BitBucket, Docker, Jenkins, PostgreSQL, Maven, Terraform, GCP, Auth0</div></div>
+          <div class="grid grid-cols-2"><h2 class="skill-header svelte-1ieo7fk">Areas of Interest</h2>
+            <div class="svelte-1ieo7fk">Neural Networks, Game Design, Compiler Design, Cyber Security</div></div></div></div>
       <div class="grid grid-cols-2 gap-5"><a href="https://github.com/ndbaker1" target="_blank" rel="noopener noreferrer"><button class="button themed w-full rounded-full py-3 px-6 shadow-md hover:shadow-lg">GITHUB
           </button></a>
         <a href="https://drive.google.com/file/d/1iIP7YMc61-OE1KJiTJB54PdTk87TsPLX/view" target="_blank" rel="noopener noreferrer"><button class="button themed w-full rounded-full py-3 px-6 shadow-md hover:shadow-lg">RESUME
@@ -71,8 +76,9 @@
   <section id="projects" class="themed"><p class="text-4xl mb-5">Projects</p>
   <div id="project-gallery" class="grid grid-cols-2 gap-10"></div>
 </section></div>
-<div class="page-loader svelte-g2yttn"></div>
+<footer id="about" class="themed align-center justify-center mt-20"><div class="grid p-5"><p>Built by Nick Baker with <b>SvelteKit</b> ☕️</p></div></footer>
 
+<div class="page-loader svelte-g2yttn"></div>
 
 
 
