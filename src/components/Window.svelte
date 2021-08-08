@@ -28,5 +28,6 @@
     border: 3px solid var(--text-color);
     max-height: 80vh;
     overflow: auto;
+    z-index: 99;
   }
 </style>

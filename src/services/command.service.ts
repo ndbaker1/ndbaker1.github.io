@@ -3,7 +3,7 @@ import { Storage } from "./persistentStorage.service"
 export type CommandPattern = RegExp
 export type Command = (args: string[]) => void
 
-export class CommandRunner {
+export class CommandService {
   private commandSet = new Map<CommandPattern, Command>()
 
   register(pattern: CommandPattern, command: Command): void {

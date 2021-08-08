@@ -7,18 +7,21 @@
   export class CommandBarService {
     constructor(
       private starters: string[],
-      private commandRunner: CommandRunner,
+      private commandService: CommandService,
       private textValue: { get: () => string; set: (s: string) => void }
     ) {}
 
     showHelp = writable(false)
 
     commandList = [
-      { value: 'theme<t> [ name ]', desc: 'change to another theme by menu, or by $name' },
-      { value: 'goto<g>', desc: 'open section navigation menu' },
-      { value: '{ SECTION_NUMBER }', desc: 'scroll directly to a section by number' },
-      { value: 'github', desc: 'open github in a new tab' },
-      { value: 'resume', desc: 'open resume in a new tab' },
+      {
+        value: 'theme [ name ]',
+        info: ['alias: t', 'change to another theme by menu, or by <name>'],
+      },
+      { value: ':goto', info: ['alias: g', 'open section navigation menu'] },
+      { value: ':{ SECTION_NUMBER }', info: ['scroll directly to a section by number'] },
+      { value: ':github', info: ['open github in a new tab'] },
+      { value: ':resume', info: ['open resume in a new tab'] },
     ]
 
     bar = {
@@ -36,7 +39,7 @@
     keyHandlers = {
       keyup: (event: KeyboardEvent): void => {
         if (event.key === 'Enter') {
-          this.commandRunner.execute(this.textValue.get())
+          this.commandService.execute(this.textValue.get())
           this.bar.close()
         } else if (!this.starters.some((c) => this.textValue.get().startsWith(c))) {
           this.bar.close()
@@ -56,30 +59,30 @@
 
   import Window from './Window.svelte'
   import { focusOnVisible } from '../actions/focusOnVisible.action'
-  import { CommandRunner } from '../services/command.service'
+  import { CommandService } from '../services/command.service'
   import { Commands } from '../services/commands/commandList'
   import { Links } from '../mydata'
   import { onMount } from 'svelte'
 
-  const commandRunner = new CommandRunner()
-  const commandBarService = new CommandBarService([':'], commandRunner, {
+  const commandService = new CommandService()
+  const commandBarService = new CommandBarService([':'], commandService, {
     get: () => value,
     set: (s) => (value = s),
   })
 
-  commandRunner.register(/^:(help|h)$/i, () => showHelp.set(true))
+  commandService.register(/^:(help|h)$/i, () => showHelp.set(true))
 
-  commandRunner.register(/^:set$/i, Commands.setVariable)
+  commandService.register(/^:set$/i, Commands.setVariable)
 
-  commandRunner.register(/^:(theme|t)$/i, Commands.manageTheme)
-  commandRunner.register(/^:(goto|g)$/i, Commands.openNavigator)
-  commandRunner.register(/^:\d$/i, Commands.navigate)
+  commandService.register(/^:(theme|t)$/i, Commands.manageTheme)
+  commandService.register(/^:(goto|g)$/i, Commands.openNavigator)
+  commandService.register(/^:\d$/i, Commands.navigate)
 
-  commandRunner.register(/^:github$/i, () => window.open(Links.github))
-  commandRunner.register(/^:resume$/i, () => window.open(Links.resume))
-  commandRunner.register(/^:anime$/i, () => window.open(Links.animeList))
+  commandService.register(/^:github$/i, () => window.open(Links.github))
+  commandService.register(/^:resume$/i, () => window.open(Links.resume))
+  commandService.register(/^:anime$/i, () => window.open(Links.animeList))
 
-  let value
+  let value = ''
   const showBar = commandBarService.bar.show
   const showHelp = commandBarService.showHelp
 
@@ -93,9 +96,12 @@
     <div class="themed p-2 ">
       <h1 class="text-2xl">Commands</h1>
       <hr />
-      <div class="text-left text-xl">
+      <div class="text-left">
         {#each commandBarService.commandList as command}
-          <p>:{command.value} <br /> -- {command.desc}</p>
+          <p>{command.value}</p>
+          {#each command.info as info}
+            <p>-- {info}</p>
+          {/each}
         {/each}
         <br />
         <p>. . . and secret commands</p>
