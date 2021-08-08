@@ -14,10 +14,12 @@
 <svelte:window bind:scrollY />
 
 <div id="navbar" class="themed">
-  {#if scrollY < 50}
+  {#if scrollY < 20}
     <header transition:fly class="bar themed fixed grid text-left  p-6">
       <a id="name" href="./" class="text-2xl"> Nick Baker </a>
-      <p>type ":help" to see commands</p>
+      {#if window.outerHeight > 800}
+        <p>type ":help" to see commands</p>
+      {/if}
     </header>
   {/if}
   {#if showThemePicker}
