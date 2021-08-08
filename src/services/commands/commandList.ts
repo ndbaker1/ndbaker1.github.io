@@ -10,6 +10,8 @@ type PredefinedCommand =
   | 'openNavigator'
   | 'navigate'
   | 'setVariable'
+  | 'logVariables'
+  | 'clearVariables'
   | 'wasm'
 
 export const Commands: Record<PredefinedCommand, Command> = {
@@ -33,6 +35,14 @@ export const Commands: Record<PredefinedCommand, Command> = {
 
   setVariable: ([, key, value]) => {
     Storage.set(key, value)
+  },
+
+  logVariables: () => {
+    console.log(Storage.getAll())
+  },
+
+  clearVariables: () => {
+    Storage.clear()
   },
 
   wasm: async ([, wasmURL, funcName, ...funcArgs]) => {

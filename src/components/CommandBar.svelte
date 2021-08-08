@@ -22,6 +22,10 @@
       { value: ':{ SECTION_NUMBER }', info: ['scroll directly to a section by number'] },
       { value: ':github', info: ['open github in a new tab'] },
       { value: ':resume', info: ['open resume in a new tab'] },
+      {
+        value: ':set KEY VALUE',
+        info: ['set a value that can be used in other commands using $KEY'],
+      },
     ]
 
     bar = {
@@ -70,14 +74,19 @@
     set: (s) => (value = s),
   })
 
+  // help
   commandService.register(/^:(help|h)$/i, () => showHelp.set(true))
-
+  // variables
   commandService.register(/^:set$/i, Commands.setVariable)
-
+  commandService.register(/^:log$/i, Commands.logVariables)
+  commandService.register(/^:clear$/i, Commands.logVariables)
+  // utilities
+  commandService.register(/^:wasm$/i, Commands.wasm)
+  // navigation/ui
   commandService.register(/^:(theme|t)$/i, Commands.manageTheme)
   commandService.register(/^:(goto|g)$/i, Commands.openNavigator)
   commandService.register(/^:\d$/i, Commands.navigate)
-
+  // links
   commandService.register(/^:github$/i, () => window.open(Links.github))
   commandService.register(/^:resume$/i, () => window.open(Links.resume))
   commandService.register(/^:anime$/i, () => window.open(Links.animeList))
