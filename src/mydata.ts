@@ -16,8 +16,9 @@ export const Skills = {
   ],
   Languages: [
     'TypeScript/JavaScript',
-    'Kotlin/Java',
     'Rust',
+    'Kotlin',
+    'Java',
     'Python',
     'SQL',
     'Bash'
