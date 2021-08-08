@@ -33,7 +33,6 @@
   .bar {
     z-index: 99;
   }
-
   .bar a {
     transition: 300ms;
   }

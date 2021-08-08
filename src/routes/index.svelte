@@ -18,7 +18,8 @@
   })
 </script>
 
-<CommandBar />
+<PageLoader />
+
 <Navbar />
 <div class="max-w-screen-lg m-auto px-10">
   <About />
@@ -26,5 +27,5 @@
 </div>
 <Footer />
 
-<PageLoader />
+<CommandBar />
 <NavigationWindow />

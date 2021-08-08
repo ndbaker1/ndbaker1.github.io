@@ -1,31 +1,55 @@
-type CommandInfo = {
-  op: (args: string[]) => void,
-  parser: (s: string) => string[]
-}
+import { Storage } from "./persistentStorage.service"
 
-export class CommandService {
-  commandSet = new Map<RegExp, CommandInfo>()
+export type CommandPattern = RegExp
+export type Command = (args: string[]) => void
 
-  preparser: CommandInfo['parser'] = (s) => s.split(' ')
+export class CommandRunner {
+  private commandSet = new Map<CommandPattern, Command>()
 
-  register(
-    command: RegExp,
-    effect: CommandInfo['op'],
-    parser = this.preparser): void {
-    this.commandSet.set(command, {
-      op: effect,
-      parser
-    })
+  register(pattern: CommandPattern, command: Command): void {
+    this.commandSet.set(pattern, command)
   }
 
   execute(text: string): void {
-    const [command,] = this.preparser(text)
-    for (const [key, cmd] of this.commandSet) {
-      if (key.test(command)) {
-        const [, ...args] = cmd.parser(text)
-        cmd.op(args)
+    const { prefix, args } = Parser.parse(text)
+    const commandKey = prefix + args[0]
+
+    for (const [pattern, command] of this.commandSet) {
+      if (pattern.test(commandKey)) {
+        command(args)
         break
       }
     }
+  }
+}
+
+/**
+ * @example
+ * const { prefix, args } = Parser.parse(":test-a-command arg1 arg2 --flag")
+ * // prefix  - should be ':'
+ * // args    - should be ['test-a-command', 'arg1', 'arg2', '--flag']
+ */
+class Parser {
+  static parse = (text: string): { prefix: string, args: string[] } => {
+    let args: string[]
+    args = Parser.parseArgs(text)
+    args = Parser.substituteArgs(args)
+    const prefix = Parser.getPrefix(args[0])
+    args = Parser.removePrefix(args)
+    return { prefix, args }
+  }
+
+  private static parseArgs = (text: string) => text.split(' ')
+
+  private static getPrefix = (command: string) => command[0]
+
+  private static removePrefix = ([first, ...rest]: string[]) => [first.substr(1), ...rest]
+
+  private static substituteArgs = ([name, ...args]: string[]) => {
+    const subArgs = args.map(arg => arg.startsWith('$')
+      ? Storage.get(arg.substr(1))
+      : arg
+    )
+    return [name, ...subArgs]
   }
 }
