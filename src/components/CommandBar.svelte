@@ -7,7 +7,7 @@
   import { CommandService } from '../services/command.service'
   import { Commands } from '../services/commands/commandList'
   import { clickOutside } from '../actions/outsideClick.action'
-  import { Links } from '../services/globals.service'
+  import { Links } from '../mydata'
   import Window from './Window.svelte'
 
   let showHelp = false

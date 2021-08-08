@@ -9,6 +9,8 @@
   import Projects from '../components/Projects.svelte'
   import CommandBar from '../components/CommandBar.svelte'
   import NavigationWindow from '../components/NavigationWindow.svelte'
+  import Footer from '../components/Footer.svelte'
+  import PageLoader from '../components/PageLoader.svelte'
 
   onMount(() => {
     Theme.refresh()
@@ -22,27 +24,7 @@
   <About />
   <Projects />
 </div>
-<div class="page-loader" />
+<Footer />
 
+<PageLoader />
 <NavigationWindow />
-
-<style>
-  .page-loader {
-    z-index: 999;
-    background-color: black;
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    animation: load-in 0.5s ease 0.5s forwards;
-  }
-  @keyframes load-in {
-    0% {
-      height: 100%;
-    }
-    100% {
-      height: 0%;
-    }
-  }
-</style>
