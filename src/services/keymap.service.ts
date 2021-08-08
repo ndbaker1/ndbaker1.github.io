@@ -5,10 +5,8 @@ export class KeyMaps {
   }
 
   static register(keys: string[], callback: () => void): void {
-    keys.forEach(key => {
-      addEventListener('keydown', event => {
-        if (event.key == key) callback()
-      })
-    })
+    keys.forEach(key => addEventListener('keydown', event => {
+      if (event.key == key) callback()
+    }))
   }
 }
