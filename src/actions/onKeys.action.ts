@@ -1,8 +1,8 @@
 
-export function onEscape(dispatcher: () => void): (node: Node) => { destroy(): void } {
+export function onKeys(keys: string[], dispatcher: () => void): (node: Node) => { destroy(): void } {
   return (): { destroy(): void } => {
     const handleEscape = (event) => {
-      if (event.key == 'Escape')
+      if (keys.includes(event.key))
         dispatcher()
     }
 
