@@ -5,7 +5,7 @@
   let projects = []
   onMount(async () => {
     projects = await Github.getUserRepos()
-    projects = projects.filter((p) => p.description)
+    projects = projects.filter(p => p.description && !p.archived)
   })
 </script>
 
