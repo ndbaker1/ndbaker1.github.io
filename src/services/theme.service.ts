@@ -31,7 +31,7 @@ export const themes = [
     'bg-gradient2': '#22181C',
     'text-color': '#F6E8EA',
     'text-color-hover': '#EF626C',
-    "button-text-color": "#22181C",
+    "button-text-color": "white",
     "button-bg-color": '#EF626C',
     "button-bg-color-hover": '#E8545E',
   }),
