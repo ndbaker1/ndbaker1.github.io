@@ -1,7 +1,15 @@
 import { writable } from "svelte/store"
 
+export type GithubRepoData = {
+  description?: string
+  created_at: Date
+  html_url: string
+  name: string
+  archived: boolean
+}
+
 export const Github = {
-  getUserRepos: async (): Promise<any[]> => await fetch('https://api.github.com/users/ndbaker1/repos').then(res => res.json())
+  getUserRepos: async (): Promise<GithubRepoData[]> => await fetch('https://api.github.com/users/ndbaker1/repos').then(res => res.json())
 }
 
 export const showThemePickerStore = writable(false)

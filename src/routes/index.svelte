@@ -21,7 +21,7 @@
 <PageLoader />
 
 <Navbar />
-<div class="max-w-screen-lg m-auto px-10">
+<div class="max-w-screen-md m-auto px-5">
   <About />
   <Projects />
 </div>

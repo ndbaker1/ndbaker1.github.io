@@ -31,7 +31,7 @@
     <div class="grid gap-2">
       <div>
         <h2 class="text-3xl my-2">About Me</h2>
-        <p class="md:text-xl px-10">
+        <p class="md:text-xl px-10 text-justify">
           Pursuing a Computer Science Degree at the <b>University of Texas at Dallas</b>
         </p>
       </div>
