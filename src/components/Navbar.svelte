@@ -17,7 +17,7 @@
   {#if scrollY < 20}
     <header transition:fly class="bar themed fixed grid text-left p-6">
       <a id="name" href="./" class="text-2xl">
-        <button class="text-2xl" on:click={() => showThemePickerStore.set(true)}> 🌒 </button>
+        <button class="text-2xl" on:click={() => showThemePickerStore.set(true)}> 🍪 </button>
         Nick Baker
       </a>
       {#if window.outerHeight > 800}

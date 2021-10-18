@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
+
 /* Write your global styles here, in PostCSS syntax */
 @tailwind base;
 @tailwind components;
@@ -12,17 +14,12 @@ body {
   text-align: center;
 }
 
-@font-face {
-  font-family: "Dosis";
-  src: local("Dosis"), url("./assets/fonts/Dosis-Regular.ttf") format("truetype");
-}
-
 a {
   text-decoration: none;
 }
 
 * {
-  font-family: "Dosis";
+  font-family: "Dosis", sans-serif;
   box-sizing: border-box;
 }
 
@@ -34,22 +31,14 @@ a {
 }
 
 /*
-  Buttons that just have a different hover color
-*/
-button.themed:hover {
-  color: var(--text-color-hover);
-  transition: color 300ms;
-}
-
-/*
   Buttons that have background color and contrast with the main background
 */
-button.button.themed {
+.button.themed {
   transition: background-color 300ms, box-shadow 300ms, transform 300ms;
   color: var(--button-text-color);
   background-color: var(--button-bg-color);
 }
-button.button.themed:hover {
+.button.themed:hover {
   transform: translateY(-5px);
   background-color: var(--button-bg-color-hover);
 }
