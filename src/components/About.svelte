@@ -31,7 +31,7 @@
     <div class="grid gap-2">
       <div>
         <h2 class="text-3xl my-2">About Me</h2>
-        <p class="md:text-xl px-10">
+        <p class="md:text-xl px-10 text-justify">
           Pursuing a Computer Science Degree at the <b>University of Texas at Dallas</b>
         </p>
       </div>
@@ -48,10 +48,13 @@
       </div>
       <div class="flex flex-row justify-center space-x-6 mt-5">
         {#each LinkGroup as link}
-          <a href={link.url} class="about-links" target="_blank" rel="noopener noreferrer">
-            <button class="button themed w-full rounded-full py-3 px-6 shadow-md hover:shadow-lg">
-              {link.title}
-            </button>
+          <a
+            href={link.url}
+            class="about-links button themed rounded-full py-3 px-6 shadow-md hover:shadow-lg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {link.title}
           </a>
         {/each}
       </div>
@@ -64,7 +67,6 @@
     text-align: center;
     color: var(--text-color-hover);
     font-size: larger;
-    font-weight: 600;
   }
   .skill-header + * {
     max-width: 300px;

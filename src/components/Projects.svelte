@@ -60,11 +60,3 @@
     {/each}
   </div>
 </section>
-
-<style>
-  .project-card {
-    background-size: cover;
-    color: var(--text-color);
-    background-color: var(--button-bg-color);
-  }
-</style>

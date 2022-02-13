@@ -33,7 +33,7 @@ export const themes = [
     'text-color-hover': '#EF626C',
     "button-text-color": "white",
     "button-bg-color": '#EF626C',
-    "button-bg-color-hover": '#EF233C',
+    "button-bg-color-hover": '#E8545E',
   }),
   new Theme('dark', {
     'bg-color': '#2B2D42',
