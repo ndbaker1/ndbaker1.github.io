@@ -1,6 +1,7 @@
 import { writable } from "svelte/store"
 
 export type GithubRepoData = {
+  homepage: string
   description?: string
   created_at: Date
   html_url: string
