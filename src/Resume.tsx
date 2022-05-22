@@ -13,43 +13,7 @@ export const Resume = () => {
       </div>
       <div id="main">
         <WorkSection />
-
-        <h2 class="section-title">competitions</h2>
-        <hr />
-
-        <div class="summary">
-          <h4> HackUTD VII: Lend-A-Hand </h4>
-          <p> February 2021 | Richardson, TX </p>
-          <ul>
-            <li>
-              <p>
-                Web App that provides a forum for sharing/lending tools to those in your community
-              </p>
-            </li>
-            <li>
-              <p>
-                2st place winner for Texas Outage Recovery Solution (sponsored by StateFarm)
-              </p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="summary">
-          <h4> HackUTD VI: News Unchained </h4>
-          <p> November 2019 | Richardson, TX </p>
-          <ul>
-            <li>
-              <p>
-                Chrome extension to scan online articles and identify bias using Google Cloud Natural Language API
-              </p>
-            </li>
-            <li>
-              <p>
-                1st place winner for Best Text Objectivity Analysis (sponsored by Cognizant)
-              </p>
-            </li>
-          </ul>
-        </div>
+        <CompetitionSection />
       </div>
     </div>
   )
@@ -179,3 +143,45 @@ const WorkSection: Component = () => {
   )
 }
 
+const CompetitionSection: Component = () => {
+  return (
+    <>
+      <h2 class="section-title">competitions</h2>
+      <hr />
+
+      <div class="summary">
+        <h4> HackUTD VII: Lend-A-Hand </h4>
+        <p> February 2021 | Richardson, TX </p>
+        <ul>
+          <li>
+            <p>
+              Web App that provides a forum for sharing/lending tools to those in your community
+            </p>
+          </li>
+          <li>
+            <p>
+              2st place winner for Texas Outage Recovery Solution (sponsored by StateFarm)
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="summary">
+        <h4> HackUTD VI: News Unchained </h4>
+        <p> November 2019 | Richardson, TX </p>
+        <ul>
+          <li>
+            <p>
+              Chrome extension to scan online articles and identify bias using Google Cloud Natural Language API
+            </p>
+          </li>
+          <li>
+            <p>
+              1st place winner for Best Text Objectivity Analysis (sponsored by Cognizant)
+            </p>
+          </li>
+        </ul>
+      </div>
+    </>
+  )
+}
