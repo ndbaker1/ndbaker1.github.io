@@ -1,5 +1,6 @@
 import { Component } from 'solid-js'
 import './App.scss'
+import './styles/scrollbar.css'
 
 import { Education, Items, LabelledList, Section } from './Resume'
 
