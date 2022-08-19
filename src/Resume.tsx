@@ -2,41 +2,16 @@ import { Component, For, ParentProps } from 'solid-js'
 import './Resume.scss'
 
 
-export const Info: Component = () => {
+type LabelledListProps = {
+  listLabel: string
+  items: string[]
+}
+export const LabelledList: Component<LabelledListProps> = (props) => {
   return (
     <>
-      <h2>Nicholas Baker</h2>
-      <div>
-        <p><img src="https://img.icons8.com/material-rounded/192/ffffff/address.png" width="20px" /> Plano, TX</p >
-        <p><img src="https://img.icons8.com/fluency-systems-filled/96/ffffff/phone.png" width="20px" /> (972) 330-6048</p >
-        <p><img src="https://img.icons8.com/material-rounded/192/ffffff/mail.png" width="20px" />
-          <a href="mailto:ndbaker1@outlook.com">ndbaker1@outlook.com</a>
-        </p>
-        <p><img src="https://img.icons8.com/ios-glyphs/120/ffffff/repository.png" width="20px" />
-          <a href="https://github.com/ndbaker1">github.com/ndbaker1</a>
-        </p>
-      </div>
+      <h4> {props.listLabel} </h4>
+      <p> {props.items.join(', ')} </p>
     </>
-  )
-}
-
-export const SkillsSection: Component = () => {
-  return (
-    <div id="skills">
-      <h2 class="section-title">skills</h2>
-      <hr />
-      <div>
-        <h4>Tools</h4>
-        <p>
-          Docker, React, Angular, Spring, Hibernate, Jenkins, PostgreSQL, Terraform, Maven, Google Cloud Platform,
-          Android, OAuth, Svelte
-        </p>
-        <h4>Languages</h4>
-        <p>
-          Rust, Kotlin, Typescript & Javascript, Python, HTML/CSS, Java, C/C++, SQL, GraphQL, Shell Scripting
-        </p>
-      </div>
-    </div>
   )
 }
 
@@ -49,35 +24,13 @@ type EducationProps = {
 export const Education: Component<EducationProps> = (props) => {
   return (
     <div>
-      <h4> {props.title} </h4>
+      <h5> {props.title} </h5>
       <p> {props.location} </p>
       <p>
         <img src="https://img.icons8.com/material-outlined/192/calendar--v1.png" width="20px" />
+        &nbsp;
         {props.date}
       </p>
-    </div>
-  )
-}
-
-type WorkProps = {
-  position: string
-  location: string
-  company: string
-  date: string
-  items: string[]
-}
-
-export const Work: Component<WorkProps> = (props) => {
-  return (
-    <div class="summary">
-      <h4>{props.position}</h4>
-      <p>{props.company} <br /> {props.date} | {props.location} </p>
-
-      <ul>
-        <For each={props.items}>
-          {note => <li> <p> {note} </p> </li>}
-        </For>
-      </ul>
     </div>
   )
 }
@@ -89,29 +42,52 @@ type SectionProps = ParentProps & {
 export const Section: Component<SectionProps> = (props) => {
   return (
     <div>
-      <h2 class="section-title">{props.title}</h2>
+      <h3 class="section-title">{props.title}</h3>
       <hr />
       {props.children}
     </div>
   )
 }
 
-type CompetitionProps = {
+type BulletedItemProps = {
+  type: 'competition'
   event: string
   dateAndPlace: string
   items: string[]
+} | {
+  type: 'work'
+  position: string
+  location: string
+  company: string
+  date: string
+  items: string[]
 }
 
-export const Competition: Component<CompetitionProps> = (props) => {
-  return (
-    <div class="summary">
-      <h4> {props.event} </h4>
-      <p> {props.dateAndPlace} </p>
-      <ul>
-        <For each={props.items}>
-          {item => <li> <p> {item} </p> </li>}
-        </For>
-      </ul>
-    </div>
-  )
+
+export const Items: Component<BulletedItemProps> = (props) => {
+  if (props.type === 'work') {
+    return (
+      <div class="summary">
+        <h4> {props.position} </h4>
+        <p> {props.company} <br /> {props.date} | {props.location} </p>
+        <ul>
+          <For each={props.items}>
+            {note => <li> <p> {note} </p> </li>}
+          </For>
+        </ul>
+      </div>
+    )
+  } else if (props.type === 'competition') {
+    return (
+      <div class="summary">
+        <h4> {props.event} </h4>
+        <p> {props.dateAndPlace} </p>
+        <ul>
+          <For each={props.items}>
+            {item => <li> <p> {item} </p> </li>}
+          </For>
+        </ul>
+      </div>
+    )
+  }
 }

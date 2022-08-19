@@ -1,15 +1,24 @@
 import { Component } from 'solid-js'
 import './App.scss'
 
-import { Competition, Education, Info, Section, SkillsSection, Work } from './Resume'
+import { Education, Items, LabelledList, Section } from './Resume'
 
 
 const App: Component = () => {
   return (
+    <Resume />
+  )
+}
+
+export default App
+
+
+const Resume: Component = () => {
+  return (
     <div id='resume'>
-      <div id="header">
-        <Info />
-      </div>
+
+      <CustomInfo />
+
       <div id="side">
         <Section title='education'>
           <Education
@@ -23,21 +32,41 @@ const App: Component = () => {
             date='August 2019 - May 2022' />
         </Section>
 
-        <SkillsSection />
+        <Section title='skills'>
+          <LabelledList
+            listLabel='Tools'
+            items={[
+              'Docker', 'React', 'Angular', 'Spring', 'Hibernate',
+              'Jenkins', 'PostgreSQL', 'Terraform', 'Maven',
+              'Google Cloud Platform', 'Android', 'OAuth', 'Svelte',
+            ]} />
+
+          <LabelledList
+            listLabel='Languages'
+            items={[
+              'Rust', 'Kotlin', 'Typescript & Javascript', 'Python',
+              'HTML/CSS', 'Java', 'C/C++', 'SQL', 'GraphQL', 'Bash',
+            ]} />
+        </Section>
       </div>
+
       <div id="main">
         <Section title='work experience'>
-          <Work
-            position='AWS Software Development Engineer Intern'
+          <Items
+            type='work'
+            position='AWS SDE Intern'
             company='AWS SageMaker'
             location='Seattle, Washington'
             date='May - August 2022'
-            items={['AWS SageMaker']} />
+            items={[
+              'Created a data lake built on data flow through DynamoDB and showcased queries and transformations on the data',
+            ]} />
 
-          <Work
+          <Items
+            type='work'
             position='Software Developer'
             company='Tritech Software Development'
-            date='June - March 2020'
+            date='June 2020 - March 2022'
             location='Allen, TX'
             items={[
               `Contributed towards replatforming a monolithic Java product to a Cloud Provider and refactoring it into REST microservices using Kotlin, Spring, Hibernate, and PostgreSQL`,
@@ -50,7 +79,8 @@ const App: Component = () => {
         </Section>
 
         <Section title='competitions'>
-          <Competition
+          <Items
+            type='competition'
             event='HackUTD VI: News Unchained'
             dateAndPlace='November 2019 | Richardson, TX'
             items={[
@@ -58,7 +88,8 @@ const App: Component = () => {
               `1st place winner for Best Text Objectivity Analysis (sponsored by Cognizant)`,
             ]} />
 
-          <Competition
+          <Items
+            type='competition'
             event='HackUTD VII: Lend-A-Hand'
             dateAndPlace='February 2021 | Richardson, TX'
             items={[
@@ -67,8 +98,37 @@ const App: Component = () => {
             ]} />
         </Section>
       </div>
-    </div>
+    </div >
   )
 }
 
-export default App
+
+const CustomInfo: Component = () => {
+  return (
+    <div id="header">
+      <h2>Nicholas Baker</h2>
+      <div>
+        <p>
+          <img src="https://img.icons8.com/material-rounded/192/ffffff/address.png" width="20px" />
+          &nbsp;
+          Plano, TX
+        </p >
+        <p>
+          <img src="https://img.icons8.com/fluency-systems-filled/96/ffffff/phone.png" width="20px" />
+          &nbsp;
+          (972) 330-6048
+        </p >
+        <p>
+          <img src="https://img.icons8.com/material-rounded/192/ffffff/mail.png" width="20px" />
+          &nbsp;
+          <a href="mailto:ndbaker1@outlook.com" target='_blank'>ndbaker1@outlook.com</a>
+        </p>
+        <p>
+          <img src="https://img.icons8.com/ios-glyphs/120/ffffff/repository.png" width="20px" />
+          &nbsp;
+          <a href="https://github.com/ndbaker1" target='_blank'>github.com/ndbaker1</a>
+        </p>
+      </div>
+    </div>
+  )
+}
