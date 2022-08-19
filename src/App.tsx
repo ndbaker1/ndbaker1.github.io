@@ -3,6 +3,7 @@ import './App.scss'
 
 import { Competition, Education, Info, Section, SkillsSection, Work } from './Resume'
 
+
 const App: Component = () => {
   return (
     <div id='resume'>
