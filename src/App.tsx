@@ -102,7 +102,6 @@ const Resume: Component = () => {
   )
 }
 
-
 const CustomInfo: Component = () => {
   return (
     <div id="header">
