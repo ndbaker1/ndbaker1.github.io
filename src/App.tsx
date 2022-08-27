@@ -1,4 +1,3 @@
-import { Component } from 'solid-js'
 import './App.scss'
 import './styles/scrollbar.css'
 
@@ -7,7 +6,7 @@ import { Education, Items, LabelledList, Section } from './Resume'
 import portfolio from '../assets/portfolio.yaml'
 
 
-const App: Component = () => {
+const App = () => {
   return (
     <Resume />
   )
@@ -16,7 +15,7 @@ const App: Component = () => {
 export default App
 
 
-const Resume: Component = () => {
+const Resume = () => {
   return (
     <div id='resume'>
 
@@ -70,7 +69,7 @@ const Resume: Component = () => {
   )
 }
 
-const CustomInfo: Component = () => {
+const CustomInfo = () => {
   return (
     <div id="header">
       <h2>Nicholas Baker</h2>

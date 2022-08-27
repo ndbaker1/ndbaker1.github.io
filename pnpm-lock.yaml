@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@modyfi/vite-plugin-yaml': ^1.0.3
   '@typescript-eslint/eslint-plugin': ^5.25.0
   '@typescript-eslint/parser': ^5.25.0
   eslint: ^8.16.0
@@ -19,6 +20,7 @@ dependencies:
   solid-js: 1.4.2
 
 devDependencies:
+  '@modyfi/vite-plugin-yaml': 1.0.3_vite@2.9.9
   '@typescript-eslint/eslint-plugin': 5.33.1_yjnadalavu323wqqhkgs56bdrq
   '@typescript-eslint/parser': 5.33.1_jy673cbh7vjykirk7l57zzfyvy
   eslint: 8.22.0
@@ -410,6 +412,18 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
 
+  /@modyfi/vite-plugin-yaml/1.0.3_vite@2.9.9:
+    resolution: {integrity: sha512-UB9A9b5h9v4fruyZPeLQh4k7ZF7KPrOuMnTfSIJD2WYXx9rHE0U19/RzLjFhDzWnTBPZWu6RoT4wxsaDkxXUzw==}
+    requiresBuild: true
+    peerDependencies:
+      vite: ^2.6.0 || ^3.0.0
+    dependencies:
+      '@rollup/pluginutils': 4.2.1
+      js-yaml: 4.1.0
+      tosource: 2.0.0-alpha.3
+      vite: 2.9.9_sass@1.52.1
+    dev: true
+
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -429,6 +443,14 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+    dev: true
+
+  /@rollup/pluginutils/4.2.1:
+    resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      estree-walker: 2.0.2
+      picomatch: 2.3.1
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -1398,6 +1420,10 @@ packages:
     engines: {node: '>=4.0'}
     dev: true
 
+  /estree-walker/2.0.2:
+    resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
+    dev: true
+
   /esutils/2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
@@ -2256,6 +2282,11 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
+    dev: true
+
+  /tosource/2.0.0-alpha.3:
+    resolution: {integrity: sha512-KAB2lrSS48y91MzFPFuDg4hLbvDiyTjOVgaK7Erw+5AmZXNq4sFRVn8r6yxSLuNs15PaokrDRpS61ERY9uZOug==}
+    engines: {node: '>=10'}
     dev: true
 
   /ts-toolbelt/9.6.0:

@@ -1,6 +1,5 @@
-import { Component, For, ParentProps } from 'solid-js'
+import { Component, ParentProps } from 'solid-js'
 import './Resume.scss'
-
 
 type LabelledListProps = {
   listLabel: string
@@ -71,9 +70,9 @@ export const Items: Component<BulletedItemProps> = (props) => {
         <h4> {props.position} </h4>
         <p> {props.company} <br /> {props.date} | {props.location} </p>
         <ul>
-          <For each={props.items}>
-            {note => <li> <p> {note} </p> </li>}
-          </For>
+          {props.items.map(note => (
+            <li> <p> {note} </p> </li>
+          ))}
         </ul>
       </div>
     )
@@ -83,9 +82,9 @@ export const Items: Component<BulletedItemProps> = (props) => {
         <h4> {props.event} </h4>
         <p> {props.dateAndPlace} </p>
         <ul>
-          <For each={props.items}>
-            {item => <li> <p> {item} </p> </li>}
-          </For>
+          {props.items.map(note => (
+            <li> <p> {note} </p> </li>
+          ))}
         </ul>
       </div>
     )
