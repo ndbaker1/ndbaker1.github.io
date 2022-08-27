@@ -43,11 +43,11 @@ class Parser {
 
   private static getPrefix = (command: string) => command[0]
 
-  private static removePrefix = ([first, ...rest]: string[]) => [first.substr(1), ...rest]
+  private static removePrefix = ([first, ...rest]: string[]) => [first.substring(1), ...rest]
 
   private static substituteArgs = ([name, ...args]: string[]) => {
     const subArgs = args.map(arg => arg.startsWith('$')
-      ? Storage.get(arg.substr(1))
+      ? Storage.get(arg.substring(1))
       : arg
     )
     return [name, ...subArgs]

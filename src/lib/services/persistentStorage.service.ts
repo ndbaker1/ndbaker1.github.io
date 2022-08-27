@@ -16,7 +16,7 @@ export const Storage = {
     ) {
       if (itemKey.startsWith(PREFIX))
         items.push({
-          key: itemKey.substr(PREFIX.length),
+          key: itemKey.substring(PREFIX.length),
           value: sessionStorage.getItem(itemKey),
         })
     }

@@ -12,6 +12,7 @@ type ColorVariables =
 
 export class Theme {
   constructor(public name: string, public colors: Record<ColorVariables, string>) { }
+
   setCurrent(): void {
     Object.entries(this.colors).forEach(([name, value]) => {
       document.documentElement.style.setProperty('--' + name, value)
