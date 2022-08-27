@@ -1,29 +1,37 @@
 declare module '*.yaml' {
-    type Portfolio = {
-        education: {
-            title: string,
-            school: string,
-            date: string,
-        }[],
-        skills: {
-            tools: string[],
-            languages: string[],
-        },
-        work: {
-            company: string,
-            position: string,
-            location: string,
-            date: string,
-            items: string[],
-        }[],
-        competitions: {
-            event: string,
-            date: string,
-            location: string,
-            items: string[],
-        }[],
-    };
-
     const data: Portfolio;
     export default data;
+}
+
+export interface Portfolio {
+    education: Education[];
+    skills: Skills;
+    work: Work[];
+    competitions: Competition[];
+}
+
+export interface Competition {
+    event: string;
+    date: string;
+    location: string;
+    items: string[];
+}
+
+export interface Education {
+    title: string;
+    school: string;
+    date: string;
+}
+
+export interface Skills {
+    tools: string[];
+    languages: string[];
+}
+
+export interface Work {
+    company: string;
+    position: string;
+    location: string;
+    date: string;
+    items: string[];
 }
