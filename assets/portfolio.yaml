@@ -1,27 +1,27 @@
 education:
   - title: "M.S. in Cyber Security"
-    location: "University of Texas at Dallas"
+    school: "University of Texas at Dallas"
     date: "August 2022 - Present"
   - title: "B.S. in Computer Science"
-    location: "University of Texas at Dallas"
+    school: "University of Texas at Dallas"
     date: "August 2019 - May 2022"
 
 skills:
   tools: [ "Docker", "React", "Angular", "Spring", "Hibernate", "Jenkins", "PostgreSQL", "Terraform", "Maven", "Google Cloud Platform", "Android", "OAuth", "Svelte" ]
-  Languages: [ "Rust", "Kotlin", "Typescript & Javascript", "Python", "HTML/CSS", "Java", "C/C++", "SQL", "GraphQL", "Bash" ]
+  languages: [ "Rust", "Kotlin", "Typescript & Javascript", "Python", "HTML/CSS", "Java", "C/C++", "SQL", "GraphQL", "Bash" ]
 
 work:
   - company: "AWS SageMaker"
-    position: "AWS SDE Intern"
+    position: "SDE Intern"
     location: "Seattle, Washington"
     date: "May - August 2022"
-    notes:
-      - "Created a data lake built on data flow through DynamoDB and showcased queries and transformations on the data"
+    items:
+      - "Created a data lake built on state flow through DynamoDB and showcased queries and transformations on available data"
   - company: "Tritech Software Development"
     position: "Software Developer"
     date: "June 2020 - March 2022"
     location: "Allen, TX"
-    notes:
+    items:
       - "Contributed towards replatforming a monolithic Java product to a Cloud Provider and refactoring it into REST microservices using Kotlin, Spring, Hibernate, and PostgreSQL"
       - "Supervised Auth0 integrations and configured several extensions to the authentication pipelines"
       - "Provisioned and maintained cloud environments using Terraform and created Jenkins CI/CD jobs to orchestrate builds, dockerization, artifact staging, and deployments"
@@ -30,13 +30,15 @@ work:
       - "Updated ETL Batch jobs aggregating data for Apache Superset"
 
 competitions:
-  - event: "HackUTD VI: News Unchained"
-    dateAndPlace: "November 2019 | Richardson, TX"
-    notes:
-      - "Chrome extension to scan online articles and identify bias using Google Cloud Natural Language API"
-      - "1st place winner for Best Text Objectivity Analysis (sponsored by Cognizant)"
   - event: "HackUTD VII: Lend-A-Hand"
-    dateAndPlace: "February 2021 | Richardson, TX"
-    notes:
+    date: "February 2021"
+    location: "Richardson, TX"
+    items:
       - "Web App that provides a forum for sharing/lending tools to those in your community"
       - "2st place winner for Texas Outage Recovery Solution (sponsored by StateFarm)"
+  - event: "HackUTD VI: News Unchained"
+    date: "November 2019"
+    location: "Richardson, TX"
+    items:
+      - "Chrome extension to scan online articles and identify bias using Google Cloud Natural Language API"
+      - "1st place winner for Best Text Objectivity Analysis (sponsored by Cognizant)"

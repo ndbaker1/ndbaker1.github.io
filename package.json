@@ -9,6 +9,7 @@
     "lint": "eslint . --fix"
   },
   "devDependencies": {
+    "@modyfi/vite-plugin-yaml": "^1.0.3",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
     "eslint": "^8.16.0",

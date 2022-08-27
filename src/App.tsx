@@ -4,6 +4,8 @@ import './styles/scrollbar.css'
 
 import { Education, Items, LabelledList, Section } from './Resume'
 
+import portfolio from '../assets/portfolio.yaml'
+
 
 const App: Component = () => {
   return (
@@ -22,81 +24,46 @@ const Resume: Component = () => {
 
       <div id="side">
         <Section title='education'>
-          <Education
-            title="M.S. in Cyber Security"
-            location='University of Texas at Dallas'
-            date='August 2022 - Present' />
-
-          <Education
-            title="B.S. in Computer Science"
-            location='University of Texas at Dallas'
-            date='August 2019 - May 2022' />
+          {portfolio.education.map(edu => (
+            <Education
+              title={edu.title}
+              location={edu.school}
+              date={edu.date} />
+          ))}
         </Section>
 
         <Section title='skills'>
           <LabelledList
             listLabel='Tools'
-            items={[
-              'Docker', 'React', 'Angular', 'Spring', 'Hibernate',
-              'Jenkins', 'PostgreSQL', 'Terraform', 'Maven',
-              'Google Cloud Platform', 'Android', 'OAuth', 'Svelte',
-            ]} />
+            items={portfolio.skills.tools} />
 
           <LabelledList
             listLabel='Languages'
-            items={[
-              'Rust', 'Kotlin', 'Typescript & Javascript', 'Python',
-              'HTML/CSS', 'Java', 'C/C++', 'SQL', 'GraphQL', 'Bash',
-            ]} />
+            items={portfolio.skills.languages} />
         </Section>
       </div>
 
       <div id="main">
         <Section title='work experience'>
-          <Items
-            type='work'
-            position='AWS SDE Intern'
-            company='AWS SageMaker'
-            location='Seattle, Washington'
-            date='May - August 2022'
-            items={[
-              'Created a data lake built on data flow through DynamoDB and showcased queries and transformations on the data',
-            ]} />
-
-          <Items
-            type='work'
-            position='Software Developer'
-            company='Tritech Software Development'
-            date='June 2020 - March 2022'
-            location='Allen, TX'
-            items={[
-              `Contributed towards replatforming a monolithic Java product to a Cloud Provider and refactoring it into REST microservices using Kotlin, Spring, Hibernate, and PostgreSQL`,
-              `Supervised Auth0 integrations and configured several extensions to the authentication pipelines`,
-              `Provisioned and maintained cloud environments using Terraform and created Jenkins CI/CD jobs to orchestrate builds, dockerization, artifact staging, and deployments`,
-              `Led the process of bringing frontend (Angular) development in-house from a consulting partner`,
-              `Set up end-to-end testing pipeline through Cypress and Jenkins CI/CD`,
-              `Updated ETL Batch jobs aggregating data for Apache Superset`
-            ]} />
+          {portfolio.work.map(work => (
+            <Items
+              type='work'
+              position={work.position}
+              company={work.company}
+              location={work.location}
+              date={work.date}
+              items={work.items} />
+          ))}
         </Section>
 
         <Section title='competitions'>
-          <Items
-            type='competition'
-            event='HackUTD VI: News Unchained'
-            dateAndPlace='November 2019 | Richardson, TX'
-            items={[
-              `Chrome extension to scan online articles and identify bias using Google Cloud Natural Language API`,
-              `1st place winner for Best Text Objectivity Analysis (sponsored by Cognizant)`,
-            ]} />
-
-          <Items
-            type='competition'
-            event='HackUTD VII: Lend-A-Hand'
-            dateAndPlace='February 2021 | Richardson, TX'
-            items={[
-              `Web App that provides a forum for sharing/lending tools to those in your community`,
-              `2st place winner for Texas Outage Recovery Solution (sponsored by StateFarm)`,
-            ]} />
+          {portfolio.competitions.map(comp => (
+            <Items
+              type='competition'
+              event={comp.event}
+              dateAndPlace={comp.date + " | " + comp.location}
+              items={comp.items} />
+          ))}
         </Section>
       </div>
     </div >
