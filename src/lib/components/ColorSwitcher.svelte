@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { themes } from '../services/theme.service'
+  import { themes } from '../services/theme.service';
 </script>
 
 <div id="color-switcher">

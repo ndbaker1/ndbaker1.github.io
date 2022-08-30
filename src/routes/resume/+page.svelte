@@ -1,33 +1,35 @@
 <script>
-  import Education from '$lib/components/Education.svelte'
+  import Education from '$lib/components/Education.svelte';
 
-  import Items from '$lib/components/Items.svelte'
-  import Section from '$lib/components/Section.svelte'
+  import Items from '$lib/components/Items.svelte';
+  import Section from '$lib/components/Section.svelte';
 
-  import portfolio from '$lib/portfolio.yaml'
+  import portfolio from '$lib/ndbaker1/portfolio.yml';
 </script>
 
 <div id="resume">
   <div id="header">
-    <h2>Nicholas Baker</h2>
-    <div>
-      <p>
+    <h2 class="text-xl">Nicholas Baker</h2>
+    <div class="header-items">
+      <div>
         <img
           alt="location"
           src="https://img.icons8.com/material-rounded/192/ffffff/address.png"
           width="20px"
         />
-        &nbsp; Plano, TX
-      </p>
-      <p>
+        &nbsp;
+        <p>Plano, TX</p>
+      </div>
+      <div>
         <img
           alt="phone"
           src="https://img.icons8.com/fluency-systems-filled/96/ffffff/phone.png"
           width="20px"
         />
-        &nbsp; (972) 330-6048
-      </p>
-      <p>
+        &nbsp;
+        <p>(972) 330-6048</p>
+      </div>
+      <div>
         <img
           alt="email"
           src="https://img.icons8.com/material-rounded/192/ffffff/mail.png"
@@ -35,8 +37,8 @@
         />
         &nbsp;
         <a href="mailto:ndbaker1@outlook.com" target="_blank">ndbaker1@outlook.com</a>
-      </p>
-      <p>
+      </div>
+      <div>
         <img
           alt="github"
           src="https://img.icons8.com/ios-glyphs/120/ffffff/repository.png"
@@ -44,22 +46,29 @@
         />
         &nbsp;
         <a href="https://github.com/ndbaker1" target="_blank">github.com/ndbaker1</a>
-      </p>
+      </div>
     </div>
   </div>
 
   <div id="side">
     <Section title="education">
       {#each portfolio.education as edu}
-        <Education props={edu} />
+        <Education date={edu.date} location={edu.school} title={edu.title} />
       {/each}
     </Section>
 
-    <Section title="skills">
-      <h4>Tools</h4>
-      <p>{portfolio.skills.tools.join(', ')}</p>
-      <h4>Languages</h4>
-      <p>{portfolio.skills.languages.join(', ')}</p>
+    <Section title="tools">
+      <p class="small">{portfolio.skills.tools.join(', ')}</p>
+    </Section>
+
+    <Section title="languages">
+      <p class="small">{portfolio.skills.languages.join(', ')}</p>
+    </Section>
+
+    <Section title="interests">
+      {#each portfolio.interests as interest}
+        <p class="small">{interest}</p>
+      {/each}
     </Section>
   </div>
 
@@ -91,6 +100,17 @@
 </div>
 
 <style>
+  * {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
+      sans-serif;
+  }
+
+  @media print {
+    @page {
+      size: letter;
+    }
+  }
+
   #resume {
     /* dimensions of letter paper */
     width: 8.5in;
@@ -99,7 +119,7 @@
     margin: 0 auto;
     /* organize other components in a grid */
     display: grid;
-    grid-auto-columns: 18rem auto;
+    grid-auto-columns: 16rem auto;
     grid-auto-rows: min-content 1fr;
     grid-template-areas:
       'header main'
@@ -108,8 +128,8 @@
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
   }
 
-  p {
-    font-size: 0.85rem;
+  p.small {
+    font-size: var(--small-text);
     margin: 0.2rem 0;
     align-items: center;
   }
@@ -118,16 +138,15 @@
     vertical-align: bottom;
   }
 
-  h2,
-  h4 {
-    margin-bottom: 0;
-  }
-
   #header {
     grid-area: header;
     background-color: rgb(57, 57, 57);
     color: whitesmoke;
     padding: 1.5rem;
+  }
+
+  #header > .header-items > div {
+    display: flex;
   }
 
   #side {

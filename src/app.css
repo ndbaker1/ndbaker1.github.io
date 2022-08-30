@@ -1,23 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
+/* Global Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 /* Write your global styles here, in PostCSS syntax */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-  background-image: linear-gradient(rgb(212, 101, 93), rgb(2, 27, 83) 85%);
-  font-family: "PT Sans Caption", sans-serif;
-  margin: 0;
-} */
+:root {
+  --small-text: 0.8rem;
+}
 
 body {
   margin: 0;
   overflow-x: hidden;
   min-height: 100vh;
-  /* background-color: var(--bg-color); */
-  background-image: linear-gradient(-15deg, var(--bg-gradient2), var(--bg-gradient1));
-  text-align: center;
+  background-color: var(--bg-color);
 }
 
 a {
@@ -25,8 +22,8 @@ a {
   text-decoration: none;
 }
 
+
 * {
-  font-family: "Dosis", sans-serif;
   box-sizing: border-box;
 }
 
@@ -41,14 +38,16 @@ a {
   Buttons that have background color and contrast with the main background
 */
 .button.themed {
-  transition: background-color 300ms, box-shadow 300ms, transform 300ms;
+  transition: all 300ms;
   color: var(--button-text-color);
-  background-color: var(--button-bg-color);
+  border-width: 2px;
+  border-color: var(--button-bg-color);
 }
 
 .button.themed:hover {
-  transform: translateY(-5px);
+  translate: 0 -2px;
   background-color: var(--button-bg-color-hover);
+  rotate: 5deg;
 }
 
 

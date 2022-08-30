@@ -1,22 +1,27 @@
 <script lang="ts">
-  import About from '$lib/components/About.svelte'
-  import CommandBar from '$lib/components/CommandBar.svelte'
-  import Footer from '$lib/components/Footer.svelte'
-  import Navbar from '$lib/components/Navbar.svelte'
-  import NavigationWindow from '$lib/components/NavigationWindow.svelte'
-  import PageLoader from '$lib/components/PageLoader.svelte'
-  import Projects from '$lib/components/Projects.svelte'
+  import About from '$lib/components/About.svelte';
+  import CommandBar from '$lib/components/CommandBar.svelte';
+  import Footer from '$lib/components/Footer.svelte';
+  import Navbar from '$lib/components/Navbar.svelte';
+  import PageLoader from '$lib/components/PageLoader.svelte';
 </script>
 
 <PageLoader />
 <Navbar />
-
-<div class="max-w-screen-md m-auto px-5">
+<div class="min-h-screen max-w-screen-md m-auto px-5 content">
   <About />
-  <Projects />
+  <Footer />
+  <CommandBar />
 </div>
 
-<CommandBar />
-<NavigationWindow />
+<style>
+  * {
+    font-family: 'Fira Code', serif;
+    letter-spacing: 2px;
+  }
 
-<Footer />
+  .content {
+    display: grid;
+    grid-template-rows: 1fr min-content;
+  }
+</style>

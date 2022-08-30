@@ -1,47 +1,61 @@
 <script lang="ts">
-  import Window from './Window.svelte'
-  import { focusOnVisible } from '$lib/actions/focusOnVisible.action'
-  import { CommandService } from '$lib/services/command.service'
-  import { Commands } from '$lib/services/commands/commandList'
-  import { Links } from '$lib/mydata'
+  import { onMount } from 'svelte';
 
-  import { slide } from 'svelte/transition'
-  import { CommandBarService } from '$lib/services/commandbar.service'
+  import { focusOnVisible } from '$lib/actions/focusOnVisible.action';
+  import { CommandService } from '$lib/services/command.service';
+  import { Commands } from '$lib/services/commands/commandList';
+  import { CommandBarService } from '$lib/services/commandbar.service';
 
-  import { onMount } from 'svelte'
+  import Window from './Window.svelte';
+  import ColorSwitcher from './ColorSwitcher.svelte';
 
-  const commandService = new CommandService()
-  const commandBarService = new CommandBarService([':'], commandService, {
+  import { showThemePickerStore } from '$lib/services/globals.service';
+
+  const Links = {
+    github: 'https://github.com/ndbaker1',
+    animeList: 'https://drive.google.com/file/d/1cmAtaKf69lU6dbBZfXnjsK_MecVnA46K/view',
+  };
+
+  const commandService = new CommandService();
+  const commandBarService = new CommandBarService(['Escape', ':'], commandService, {
     get: () => value,
     set: (s) => (value = s),
-  })
+  });
 
-  // help
-  commandService.register(/^:(help|h)$/i, () => showHelp.set(true))
   // variables
-  commandService.register(/^:set$/i, Commands.setVariable)
-  commandService.register(/^:log$/i, Commands.logVariables)
-  commandService.register(/^:clear$/i, Commands.logVariables)
+  commandService.register(/^:set$/i, Commands.setVariable);
+  commandService.register(/^:log$/i, Commands.logVariables);
+  commandService.register(/^:clear$/i, Commands.logVariables);
   // utilities
-  commandService.register(/^:wasm$/i, Commands.wasm)
+  commandService.register(/^:wasm$/i, Commands.wasm);
   // navigation/ui
-  commandService.register(/^:(theme|t)$/i, Commands.manageTheme)
-  commandService.register(/^:(goto|g)$/i, Commands.openNavigator)
-  commandService.register(/^:\d$/i, Commands.navigate)
+  commandService.register(/^:(theme|t)$/i, Commands.manageTheme);
   // links
-  commandService.register(/^:github$/i, () => window.open(Links.github))
-  commandService.register(/^:resume$/i, () => window.open(Links.resume))
-  commandService.register(/^:anime$/i, () => window.open(Links.animeList))
+  commandService.register(/^:github$/i, () => window.open(Links.github));
+  commandService.register(/^:anime$/i, () => window.open(Links.animeList));
 
-  let value = ''
-  const showBar = commandBarService.bar.show
-  const showHelp = commandBarService.showHelp
+  let value = '';
+  const showBar = commandBarService.bar.show;
+  const showHelp = commandBarService.showHelp;
 
   onMount(() => {
-    commandBarService.init()
-  })
+    commandBarService.init();
+  });
 </script>
 
+<!-- Command Bar -->
+{#if $showBar}
+  <input
+    id="command-bar"
+    class="w-full transition-all text-md"
+    autocomplete="off"
+    use:focusOnVisible
+    use:commandBarService.outsideClickClose
+    on:keyup={commandBarService.keyHandlers.keyup}
+    bind:value
+  />
+{/if}
+<!-- Help and Name Icon -->
 {#if $showHelp}
   <Window escapeKeys={['Escape', 'Enter']} on:close-window={() => showHelp.set(false)}>
     <div class="themed p-2 ">
@@ -60,26 +74,20 @@
     </div>
   </Window>
 {/if}
-{#if $showBar}
-  <input
-    id="command-bar"
-    class="fixed left-0 top-0 w-full transition-all text-md"
-    autocomplete="off"
-    transition:slide
-    use:focusOnVisible
-    use:commandBarService.outsideClickClose
-    on:keyup={commandBarService.keyHandlers.keyup}
-    bind:value
-  />
+<!-- Theme Picker -->
+{#if $showThemePickerStore}
+  <Window on:close-window={() => showThemePickerStore.set(false)}>
+    <ColorSwitcher />
+  </Window>
 {/if}
 
 <style>
   #command-bar {
-    font-family: 'Consolas';
+    font-family: 'Fira Code', monospace;
     z-index: 99;
-    border-bottom: 2px solid var(--button-bg-color);
+    border: 2px solid var(--button-bg-color);
+    background-color: var(--bg-color);
     color: var(--text-color);
-    background-color: transparent;
     outline: none;
   }
 </style>

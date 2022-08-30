@@ -1,20 +1,19 @@
-
 export function clickOutside(dispatcher: () => void): (node: Node) => {
-  destroy(): void
+  destroy(): void;
 } {
   return (node): { destroy(): void } => {
     const handleClick = (event) => {
       if (node && !node.contains(event.target) && !event.defaultPrevented) {
-        dispatcher()
+        dispatcher();
       }
-    }
+    };
 
-    document.addEventListener('click', handleClick, true)
+    document.addEventListener('click', handleClick, true);
 
     return {
       destroy() {
-        document.removeEventListener('click', handleClick, true)
+        document.removeEventListener('click', handleClick, true);
       },
-    }
-  }
+    };
+  };
 }

@@ -1,7 +1,7 @@
-import preprocess from "svelte-preprocess";
-import staticAdapter from '@sveltejs/adapter-static'
+import preprocess from 'svelte-preprocess';
+import staticAdapter from '@sveltejs/adapter-static';
 
-const base = process.env.BASE_HREF ? ('/' + process.env.BASE_HREF) : ''
+const base = process.env.BASE_HREF ? '/' + process.env.BASE_HREF : '';
 
 const config = {
   preprocess: [preprocess({ postcss: true })],
@@ -10,7 +10,7 @@ const config = {
     paths: {
       base,
     },
-  }
+  },
 };
 
-export default config
+export default config;

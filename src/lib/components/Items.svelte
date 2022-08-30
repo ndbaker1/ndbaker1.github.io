@@ -1,40 +1,46 @@
 <script lang="ts">
-  export let type: string
-  export let event: string
-  export let position: string
-  export let company: string
-  export let date: string
-  export let location: string
-  export let dateAndPlace: string
-  export let items: string[]
+  export let type: 'work' | 'competition';
+  export let event: string;
+  export let position: string;
+  export let company: string;
+  export let date: string;
+  export let location: string;
+  export let dateAndPlace: string;
+  export let items: string[];
 </script>
 
-{#if type === 'work'}
-  <div class="summary">
-    <h4>{position}</h4>
-    <p>{company} <br /> {date} | {location}</p>
-    <ul>
-      {#each items as note}
-        <li><p>{note}</p></li>
-      {/each}
-    </ul>
-  </div>
-{/if}
-{#if type === 'competition'}
-  <div class="summary">
-    <h4>{event}</h4>
-    <p>{dateAndPlace}</p>
-    <ul>
-      {#each items as note}
-        <li><p>{note}</p></li>
-      {/each}
-    </ul>
-  </div>
-{/if}
+<div>
+  {#if type === 'work'}
+    <p><b>{position}</b></p>
+    <p><i>{company}</i></p>
+    <p><i>{date} | {location}</i></p>
+  {/if}
+  {#if type === 'competition'}
+    <p><b>{event}</b></p>
+    <p><i>{dateAndPlace}</i></p>
+  {/if}
+
+  <ul>
+    {#each items as note}
+      <li><p>{note}</p></li>
+    {/each}
+  </ul>
+</div>
 
 <style>
   ul {
-    margin-top: 0.5rem;
-    padding-left: 1.3rem;
+    list-style: circle;
+    padding-left: 2rem;
+  }
+
+  div > p {
+    font-size: 0.9rem;
+  }
+  ul p {
+    font-size: var(--small-text);
+  }
+
+  div {
+    margin-bottom: 0.5rem;
   }
 </style>

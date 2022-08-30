@@ -1,54 +1,42 @@
-import { showNavigatorStore, showThemePickerStore } from "../globals.service"
-import { getSections } from "../section-navigation.service"
-import { themes } from "../theme.service"
+import { themes } from '../theme.service';
+import { Storage } from '../persistentStorage.service';
+import type { Command } from '../command.service';
+import { showThemePickerStore } from '../globals.service';
 
-import { Storage } from "../persistentStorage.service"
-import type { Command } from "../command.service"
 
 type PredefinedCommand =
   | 'manageTheme'
-  | 'openNavigator'
-  | 'navigate'
   | 'setVariable'
   | 'logVariables'
   | 'clearVariables'
-  | 'wasm'
+  | 'wasm';
 
 export const Commands: Record<PredefinedCommand, Command> = {
   manageTheme: ([, theme]) => {
     if (theme) {
-      themes.find((t) => t.name == theme)?.setCurrent()
-      showThemePickerStore.set(false)
+      themes.find((t) => t.name == theme)?.setCurrent();
+      showThemePickerStore.set(false);
     } else {
-      showThemePickerStore.set(true)
+      showThemePickerStore.set(true);
     }
   },
 
-  openNavigator: () => {
-    showNavigatorStore.set(true)
-  },
-
-  navigate: ([section]) => {
-    getSections()[+section - 1]?.scrollIntoView({ behavior: 'smooth' })
-    showNavigatorStore.set(false)
-  },
-
   setVariable: ([, key, value]) => {
-    Storage.set(key, value)
+    Storage.set(key, value);
   },
 
   logVariables: () => {
-    console.log(Storage.getAll())
+    console.log(Storage.getAll());
   },
 
   clearVariables: () => {
-    Storage.clear()
+    Storage.clear();
   },
 
   wasm: async ([, wasmURL, funcName, ...funcArgs]) => {
     try {
-      const wasmBin = await fetch(encodeURI(wasmURL))
-      const buffer = await wasmBin.arrayBuffer()
+      const wasmBin = await fetch(encodeURI(wasmURL));
+      const buffer = await wasmBin.arrayBuffer();
       const { instance } = await WebAssembly.instantiate(buffer, {
         env: {
           memoryBase: 0,
@@ -60,14 +48,14 @@ export const Commands: Record<PredefinedCommand, Command> = {
             initial: 0,
             element: 'anyfunc',
           }),
-        }
-      })
-      const func: any = instance.exports[funcName]
-      alert(func(funcArgs[0], funcArgs[1]))
+        },
+      });
+      const func: any = instance.exports[funcName];
+      alert(func(funcArgs[0], funcArgs[1]));
     } catch (e) {
-      console.error("wasm error:", e)
+      console.error('wasm error:', e);
     }
-  }
-}
+  },
+};
 
 // https://raw.githubusercontent.com/mdn/webassembly-examples/master/understanding-text-format/add.wasm

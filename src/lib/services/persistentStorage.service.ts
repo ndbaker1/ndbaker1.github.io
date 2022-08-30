@@ -1,14 +1,14 @@
-const PREFIX = 'ANIME_IS_COOL'
+const PREFIX = 'ANIME_IS_COOL';
 
 export const Storage = {
   get(key: string): string {
-    return sessionStorage.getItem(PREFIX + key)
+    return sessionStorage.getItem(PREFIX + key);
   },
   set(key: string, value: string): void {
-    sessionStorage.setItem(PREFIX + key, value)
+    sessionStorage.setItem(PREFIX + key, value);
   },
-  getAll(): { key: string, value: string }[] {
-    const items = []
+  getAll(): { key: string; value: string }[] {
+    const items = [];
     for (
       let i = 0, itemKey = sessionStorage.key(i);
       i < sessionStorage.length;
@@ -18,13 +18,17 @@ export const Storage = {
         items.push({
           key: itemKey.substring(PREFIX.length),
           value: sessionStorage.getItem(itemKey),
-        })
+        });
     }
-    return items
+    return items;
   },
   clear(): void {
-    for (let i = sessionStorage.length, itemKey = sessionStorage.key(i); i >= 0; i--, itemKey = sessionStorage.key(i)) {
-      if (itemKey.startsWith(PREFIX)) sessionStorage.removeItem(itemKey)
+    for (
+      let i = sessionStorage.length, itemKey = sessionStorage.key(i);
+      i >= 0;
+      i--, itemKey = sessionStorage.key(i)
+    ) {
+      if (itemKey.startsWith(PREFIX)) sessionStorage.removeItem(itemKey);
     }
-  }
-}
+  },
+};

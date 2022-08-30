@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import { Github } from '../services/globals.service'
+  import { onMount } from 'svelte';
+  import { Github } from '../services/globals.service';
 
   let projects = {
     // deployed projects are those that have a site to visit
     deployed: [],
     static: [],
-  }
+  };
 
   onMount(async () => {
-    let projectData = await Github.getUserRepos()
+    let projectData = await Github.getUserRepos();
     projectData = projectData.filter(
       (p) => p.description && p.description.length > 30 && !p.archived
-    )
+    );
 
-    projects.deployed = projectData.filter((p) => !!p.homepage)
-    projects.static = projectData.filter((p) => !p.homepage)
-  })
+    projects.deployed = projectData.filter((p) => !!p.homepage);
+    projects.static = projectData.filter((p) => !p.homepage);
+  });
 </script>
 
 <section id="projects" class="themed">

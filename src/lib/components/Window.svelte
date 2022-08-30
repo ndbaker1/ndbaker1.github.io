@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { onKeys } from '../actions/onKeys.action'
-  import { clickOutside } from '../actions/outsideClick.action'
-  import { createEventDispatcher } from 'svelte'
-  import { blur } from 'svelte/transition'
+  import { onKeys } from '../actions/onKeys.action';
+  import { clickOutside } from '../actions/outsideClick.action';
+  import { createEventDispatcher } from 'svelte';
+  import { blur } from 'svelte/transition';
 
-  export let escapeKeys: string[] = ['Escape']
+  export let escapeKeys: string[] = ['Escape'];
 
-  const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher();
 
-  const closeOnOutsideClick = clickOutside(() => dispatch('close-window'))
-  const cloneOnEscape = onKeys(escapeKeys, () => dispatch('close-window'))
+  const closeOnOutsideClick = clickOutside(() => dispatch('close-window'));
+  const cloneOnEscape = onKeys(escapeKeys, () => dispatch('close-window'));
 </script>
 
 <span
