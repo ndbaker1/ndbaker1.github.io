@@ -1,0 +1,4 @@
+
+[submodule "ndbaker1"]
+    path = "src/lib/ndbaker1"
+    url = "https://github.com/ndbaker1/ndbaker1"
