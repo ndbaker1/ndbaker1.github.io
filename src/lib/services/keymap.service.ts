@@ -1,13 +1,21 @@
 export class KeyMaps {
-  static init(): void {
-    // addEventListener('keypress', event => event.key == ':' ? alert() : '')
-  }
+  static Mappings = []
 
   static register(keys: string[], callback: () => void): void {
-    keys.forEach((key) =>
-      addEventListener('keydown', (event) => {
-        if (event.key == key) callback();
-      })
-    );
+    keys.forEach((key) => {
+      const handler = (event) => {
+        if (event.key == key) {
+          event.preventDefault();
+          callback();
+        }
+      }
+
+      addEventListener('keydown', handler, true);
+      this.Mappings.push(handler);
+    });
+  }
+
+  static cleanup(): void {
+    this.Mappings.forEach(mapping => removeEventListener('keydown', mapping, true))
   }
 }

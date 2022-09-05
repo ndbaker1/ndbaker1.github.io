@@ -1,6 +1,6 @@
 <script lang="ts">
   import About from '$lib/components/About.svelte';
-  import CommandBar from '$lib/components/CommandBar.svelte';
+  import CommandBar from '$lib/components/CommandPalette.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import Navbar from '$lib/components/Navbar.svelte';
   import PageLoader from '$lib/components/PageLoader.svelte';

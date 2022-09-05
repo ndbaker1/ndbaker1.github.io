@@ -8,18 +8,21 @@ type ColorVariables =
   | 'button-bg-color'
   | 'button-bg-color-hover';
 
+const THEME_KEY = 'theme'
+
 export class Theme {
   constructor(public name: string, public colors: Record<ColorVariables, string>) { }
 
   setCurrent(): void {
-    Object.entries(this.colors).forEach(([name, value]) => {
+    const entries = Object.entries(this.colors)
+    for (const [name, value] of entries) {
       document.documentElement.style.setProperty('--' + name, value);
-    });
-    Storage.set('theme', this.name);
+    }
+    Storage.set(THEME_KEY, this.name);
   }
 
   static refresh(): void {
-    (themes.find((t) => t.name == Storage.get('theme')) || themes[0]).setCurrent();
+    (themes.find((t) => t.name == Storage.get(THEME_KEY)) || themes[0]).setCurrent();
   }
 }
 

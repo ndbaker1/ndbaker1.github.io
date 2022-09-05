@@ -19,13 +19,18 @@
   class="themed window p-1 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
 >
   <slot />
-  <p class="text-sm">Press {escapeKeys.join(', ')} or Click Outside to Close</p>
+  {#if escapeKeys.length > 0}
+    <p class="text-sm">
+      Press {escapeKeys.join(', ')} or Click Outside to Close
+    </p>
+  {/if}
 </span>
 
 <style>
   .window {
     background-color: var(--bg-color);
-    border: 3px solid var(--text-color);
+    border: 0 solid var(--text-color);
+    border-radius: 1rem;
     max-height: 80vh;
     overflow: auto;
     z-index: 99;
