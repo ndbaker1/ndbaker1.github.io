@@ -1,7 +1,6 @@
 <script lang="ts">
   import { clickOutside } from '../actions/outsideClick.action';
   import { createEventDispatcher } from 'svelte';
-  import { blur } from 'svelte/transition';
 
   export let position: { left?: string; top?: string } = {};
 
@@ -11,7 +10,6 @@
 </script>
 
 <span
-  transition:blur
   use:closeOnOutsideClick
   class="themed window fixed top-1/2 left-1/2 transform -translate-x-1/2"
   style="left: {position?.left}; top: {position?.top};"

@@ -12,6 +12,7 @@
   import { clickOutside } from '$lib/actions/outsideClick.action';
   import { KeyMaps } from '$lib/services/keymap.service';
   import { themes } from '$lib/services/theme.service';
+  import { blur } from 'svelte/transition';
 
   const commandPaletteService = new CommandPaletteService();
 
@@ -86,27 +87,28 @@
 
 <!-- Command Bar -->
 {#if $showing}
-  <span id="backdrop" />
-  <Window position={{ top: '8rem' }} on:close-window={() => showing.set(false)}>
-    <div id="command-bar">
-      <input
-        autocomplete="off"
-        placeholder="Search"
-        use:focusOnVisible
-        bind:value={searchString}
-        on:input={updateResults}
-        on:introstart={updateResults}
-      />
-      {#each $searchResults as result, i}
-        <p
-          class="search-result {i === selectedIndex ? 'selected' : ''}"
-          on:click={() => handleChoice(result)}
-        >
-          {result}
-        </p>
-      {/each}
-    </div>
-  </Window>
+  <span transition:blur id="backdrop">
+    <Window position={{ top: '8rem' }} on:close-window={() => showing.set(false)}>
+      <div id="command-bar">
+        <input
+          autocomplete="off"
+          placeholder="Search"
+          use:focusOnVisible
+          bind:value={searchString}
+          on:input={updateResults}
+          on:introstart={updateResults}
+        />
+        {#each $searchResults as result, i}
+          <p
+            class="search-result {i === selectedIndex ? 'selected' : ''}"
+            on:click={() => handleChoice(result)}
+          >
+            {result}
+          </p>
+        {/each}
+      </div>
+    </Window>
+  </span>
 {/if}
 
 <style>
@@ -118,9 +120,11 @@
   }
 
   #command-bar > input {
-    padding: 0.5rem;
+    min-width: 50vw;
+    padding: 1rem;
     outline: none;
     background-color: inherit;
+    border-bottom: #0005 solid 2px;
   }
 
   #command-bar .search-result {
