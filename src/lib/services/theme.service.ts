@@ -8,13 +8,13 @@ type ColorVariables =
   | 'button-bg-color'
   | 'button-bg-color-hover';
 
-const THEME_KEY = 'theme'
+const THEME_KEY = 'theme';
 
 export class Theme {
-  constructor(public name: string, public colors: Record<ColorVariables, string>) { }
+  constructor(public name: string, public colors: Record<ColorVariables, string>) {}
 
   setCurrent(): void {
-    const entries = Object.entries(this.colors)
+    const entries = Object.entries(this.colors);
     for (const [name, value] of entries) {
       document.documentElement.style.setProperty('--' + name, value);
     }

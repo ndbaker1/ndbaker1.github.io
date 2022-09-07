@@ -1,5 +1,5 @@
 export class KeyMaps {
-  static Mappings = []
+  static Mappings = [];
 
   static register(keys: string[], callback: () => void): void {
     keys.forEach((key) => {
@@ -8,7 +8,7 @@ export class KeyMaps {
           event.preventDefault();
           callback();
         }
-      }
+      };
 
       addEventListener('keydown', handler, true);
       this.Mappings.push(handler);
@@ -16,6 +16,6 @@ export class KeyMaps {
   }
 
   static cleanup(): void {
-    this.Mappings.forEach(mapping => removeEventListener('keydown', mapping, true))
+    this.Mappings.forEach((mapping) => removeEventListener('keydown', mapping, true));
   }
 }

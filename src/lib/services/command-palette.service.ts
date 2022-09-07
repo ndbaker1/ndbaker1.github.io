@@ -1,52 +1,78 @@
-import { clickOutside } from '$lib/actions/outsideClick.action';
-import { writable, type Writable } from 'svelte/store';
-import { KeyMaps } from './keymap.service';
+export enum CommandStatus {
+  Executed,
+  SubCommands,
+  Invalid,
+}
 
 type Command = {
-  key: string,
-  subcommands: Command[],
-} | {
-  key: string,
-  func: () => void,
-}
+  path: string[];
+  func: () => void;
+};
+
+type CommandLeaf = CommandMap | Command;
+
+class CommandMap extends Map<string, CommandLeaf> {}
 
 export class CommandPaletteService {
-  private commands: Command[] = []
-  public commandResults: Writable<string[]> = writable([])
-  public searchText = ''
+  public commands = new CommandMap();
 
   public registerCommand(command: Command): void {
-    this.commands.push(command);
+    const path = [...command.path];
+    const last = path.pop();
+
+    let map: CommandMap = this.commands;
+    for (const pathKey of path) {
+      const next = map.get(pathKey) ?? new CommandMap();
+      if (next instanceof CommandMap) {
+        map.set(pathKey, next);
+        map = next;
+      } else {
+        throw Error('todo');
+      }
+    }
+
+    map.set(last, command);
   }
 
-  public bar = {
-    show: writable(false),
-    open: (): void =>
-      this.bar.show.update((isShowing) => {
-        if (!isShowing) {
-          this.searchText = '';
+  public search = (path: string[]): string[] => {
+    const leaf = this.traverse(path);
+    if (!leaf) {
+      return [];
+    } else if (leaf instanceof CommandMap) {
+      return [...leaf]
+        .map(([key, _]) => key)
+        .filter((key) => key.startsWith(path[path.length - 1]));
+    } else {
+      return [leaf.path[leaf.path.length - 1]];
+    }
+  };
+
+  public execute = (path: string[]): CommandStatus => {
+    const leaf = this.traverse(path);
+    if (!leaf) {
+      return CommandStatus.Invalid;
+    } else if (leaf instanceof CommandMap) {
+      return CommandStatus.SubCommands;
+    } else {
+      leaf.func();
+      return CommandStatus.Executed;
+    }
+  };
+
+  private traverse = (path: string[]): CommandLeaf | null => {
+    let mapping = this.commands;
+
+    for (const key of path) {
+      if (mapping instanceof CommandMap && mapping.has(key)) {
+        const next = mapping.get(key);
+        if (next instanceof CommandMap) {
+          mapping = next;
+        } else {
+          return next;
         }
-        return true;
-      }),
-    close: (): void => this.bar.show.set(false),
-  };
-
-  public outsideClickClose = clickOutside(this.bar.close);
-
-  public keyHandler = (event: KeyboardEvent): void => {
-    if (event.key === 'Enter') {
-      (this.commands.find(a => a.key === this.searchText) as { func: Function }).func()
-      this.bar.close();
+      }
     }
-    if (event.key === 'Escape') {
-      this.bar.close()
-    }
-  };
 
-  public init(): void {
-    KeyMaps.register(['Escape'], () => {
-      this.bar.open()
-    });
-  }
+    return mapping;
+  };
 }
-

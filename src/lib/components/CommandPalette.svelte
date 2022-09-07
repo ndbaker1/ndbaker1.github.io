@@ -5,49 +5,107 @@
   import { onMount } from 'svelte';
 
   import { focusOnVisible } from '$lib/actions/focusOnVisible.action';
-  import { CommandPaletteService } from '$lib/services/command-palette.service';
+  import { CommandPaletteService, CommandStatus } from '$lib/services/command-palette.service';
 
   import Window from './Window.svelte';
+  import { writable } from 'svelte/store';
+  import { clickOutside } from '$lib/actions/outsideClick.action';
+  import { KeyMaps } from '$lib/services/keymap.service';
+  import { themes } from '$lib/services/theme.service';
 
   const commandPaletteService = new CommandPaletteService();
 
+  for (const theme of themes) {
+    commandPaletteService.registerCommand({
+      path: ['theme', theme.name],
+      func: () => theme.setCurrent(),
+    });
+  }
+
   commandPaletteService.registerCommand({
-    key: 'theme',
-    func: () => '',
-  });
-  commandPaletteService.registerCommand({
-    key: 'anime',
+    path: ['anime'],
     func: () =>
       window.open('https://drive.google.com/file/d/1cmAtaKf69lU6dbBZfXnjsK_MecVnA46K/view'),
   });
 
-  // extract stores
-  const {
-    bar: { show },
-    commandResults,
-  } = commandPaletteService;
-  // extract writable values
-  let { searchText } = commandPaletteService;
+  const showing = writable(false);
+  const searchResults = writable([]);
+  let searchString = '';
+  let pathString = [];
+  let selectedIndex = 0;
 
-  onMount(() => commandPaletteService.init());
+  clickOutside(() => showing.set(false));
+
+  function updateResults() {
+    const augmentedPath = pathString.concat(searchString);
+    const searchReponse = commandPaletteService.search(augmentedPath);
+    searchResults.set(searchReponse);
+  }
+
+  function handleChoice(choice: string) {
+    const augmentedPath = pathString.concat(choice);
+
+    searchString = '';
+
+    switch (commandPaletteService.execute(augmentedPath)) {
+      case CommandStatus.SubCommands:
+        pathString.push(choice);
+        updateResults();
+        break;
+      default:
+        showing.set(false);
+    }
+  }
+
+  onMount(() => {
+    KeyMaps.register(['Escape'], () =>
+      showing.update((stat) => {
+        pathString = [];
+        searchString = '';
+        selectedIndex = 0;
+        searchResults.set(commandPaletteService.search(['']));
+        return !stat;
+      })
+    );
+
+    KeyMaps.register(['Enter'], () => {
+      if ($showing) handleChoice($searchResults[selectedIndex]);
+    });
+
+    KeyMaps.register(['ArrowUp'], () => {
+      if ($showing) selectedIndex = Math.max(selectedIndex - 1, 0);
+    });
+
+    KeyMaps.register(['ArrowDown'], () => {
+      if ($showing) selectedIndex = Math.min(selectedIndex + 1, $searchResults.length - 1);
+    });
+
+    return KeyMaps.cleanup;
+  });
 </script>
 
 <!-- Command Bar -->
-{#if $show}
+{#if $showing}
   <span id="backdrop" />
-  <Window escapeKeys={[]} on:close-window={() => show.set(false)}>
-    <input
-      id="command-bar"
-      class="w-full text-md"
-      autocomplete="off"
-      placeholder="Search"
-      use:focusOnVisible
-      bind:value={searchText}
-      on:keypress={commandPaletteService.keyHandler}
-    />
-    {#each $commandResults as result}
-      <p>{result}</p>
-    {/each}
+  <Window position={{ top: '8rem' }} on:close-window={() => showing.set(false)}>
+    <div id="command-bar">
+      <input
+        autocomplete="off"
+        placeholder="Search"
+        use:focusOnVisible
+        bind:value={searchString}
+        on:input={updateResults}
+        on:introstart={updateResults}
+      />
+      {#each $searchResults as result, i}
+        <p
+          class="search-result {i === selectedIndex ? 'selected' : ''}"
+          on:click={() => handleChoice(result)}
+        >
+          {result}
+        </p>
+      {/each}
+    </div>
   </Window>
 {/if}
 
@@ -57,7 +115,23 @@
     z-index: 99;
     background-color: var(--bg-color);
     color: var(--text-color);
+  }
+
+  #command-bar > input {
+    padding: 0.5rem;
     outline: none;
+    background-color: inherit;
+  }
+
+  #command-bar .search-result {
+    padding: 0.5rem;
+    font-size: var(--small-text);
+  }
+
+  #command-bar .search-result:hover,
+  .selected {
+    background-color: var(--button-bg-color-hover);
+    cursor: pointer;
   }
 
   #backdrop {
