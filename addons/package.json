@@ -1,10 +1,9 @@
 {
   "name": "addons",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "Useful web functions",
   "author": "Nicholas Baker",
-  "dependencies": {
+  "devDependencies": {
     "typescript": "^4.8.3"
   }
 }
