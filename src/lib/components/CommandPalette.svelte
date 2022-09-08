@@ -24,12 +24,6 @@
   }
 
   commandPaletteService.registerCommand({
-    path: ['📺 anime'],
-    func: () =>
-      window.open('https://drive.google.com/file/d/1cmAtaKf69lU6dbBZfXnjsK_MecVnA46K/view'),
-  });
-
-  commandPaletteService.registerCommand({
     path: ['📄 resume'],
     func: () => window.open('/resume'),
   });
