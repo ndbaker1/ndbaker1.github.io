@@ -11,7 +11,7 @@ type ColorVariables =
 const THEME_KEY = 'theme';
 
 export class Theme {
-  constructor(public name: string, public colors: Record<ColorVariables, string>) {}
+  constructor(public name: string, public colors: Record<ColorVariables, string>) { }
 
   setCurrent(): void {
     const entries = Object.entries(this.colors);

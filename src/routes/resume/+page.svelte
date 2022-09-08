@@ -1,8 +1,7 @@
 <script>
-  import Education from '$lib/components/Education.svelte';
-
-  import Items from '$lib/components/Items.svelte';
-  import Section from '$lib/components/Section.svelte';
+  import Items from '$lib/components/resume/Items.svelte';
+  import Section from '$lib/components/resume/Section.svelte';
+  import Education from '$lib/components/resume/Education.svelte';
 
   import portfolio from '$lib/ndbaker1/portfolio.yml';
 </script>

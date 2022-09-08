@@ -11,7 +11,7 @@ type Command = {
 
 type CommandLeaf = CommandMap | Command;
 
-class CommandMap extends Map<string, CommandLeaf> {}
+class CommandMap extends Map<string, CommandLeaf> { }
 
 export class CommandPaletteService {
   public commands = new CommandMap();
@@ -27,7 +27,7 @@ export class CommandPaletteService {
         map.set(pathKey, next);
         map = next;
       } else {
-        throw Error('todo');
+        throw Error('unhandled.');
       }
     }
 
@@ -39,9 +39,10 @@ export class CommandPaletteService {
     if (!leaf) {
       return [];
     } else if (leaf instanceof CommandMap) {
+      const term = path[path.length - 1];
       return [...leaf]
         .map(([key, _]) => key)
-        .filter((key) => key.startsWith(path[path.length - 1]));
+        .filter((key) => key.startsWith(term) || key.includes(term));
     } else {
       return [leaf.path[leaf.path.length - 1]];
     }
@@ -50,10 +51,13 @@ export class CommandPaletteService {
   public execute = (path: string[]): CommandStatus => {
     const leaf = this.traverse(path);
     if (!leaf) {
+      // return invalid command flag when the traversal is invalid
       return CommandStatus.Invalid;
     } else if (leaf instanceof CommandMap) {
+      // return set of subcommands when map returned
       return CommandStatus.SubCommands;
     } else {
+      // if path leads to a valid command, execute it and return executed status
       leaf.func();
       return CommandStatus.Executed;
     }

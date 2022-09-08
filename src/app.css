@@ -46,7 +46,6 @@ a {
 .button.themed:hover {
   translate: 0 -2px;
   background-color: var(--button-bg-color-hover);
-  rotate: 5deg;
 }
 
 body::-webkit-scrollbar {

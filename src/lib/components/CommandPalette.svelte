@@ -18,15 +18,20 @@
 
   for (const theme of themes) {
     commandPaletteService.registerCommand({
-      path: ['theme', theme.name],
+      path: ['🎨 theme', theme.name],
       func: () => theme.setCurrent(),
     });
   }
 
   commandPaletteService.registerCommand({
-    path: ['anime'],
+    path: ['📺 anime'],
     func: () =>
       window.open('https://drive.google.com/file/d/1cmAtaKf69lU6dbBZfXnjsK_MecVnA46K/view'),
+  });
+
+  commandPaletteService.registerCommand({
+    path: ['📄 resume'],
+    func: () => window.open('/resume'),
   });
 
   const showing = writable(false);
@@ -124,7 +129,6 @@
     padding: 1rem;
     outline: none;
     background-color: inherit;
-    border-bottom: #0005 solid 2px;
   }
 
   #command-bar .search-result {

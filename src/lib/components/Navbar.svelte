@@ -9,6 +9,7 @@
   {#if scrollY < 20}
     <header transition:fly class="bar themed fixed grid text-left p-4">
       <a id="name" href="./" class="text-xl"> Nick Baker </a>
+      <small><kbd>Escape</kbd> to navigate</small>
     </header>
   {/if}
 </div>
@@ -26,5 +27,16 @@
   }
   .bar a:hover {
     color: var(--text-color-hover);
+  }
+
+  small {
+    font-size: 0.7rem;
+  }
+
+  kbd {
+    box-shadow: 0 1px 1px #0009;
+    background-color: var(--button-bg-color-hover);
+    border-radius: 4px;
+    padding: 2px 4px;
   }
 </style>
