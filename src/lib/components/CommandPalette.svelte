@@ -30,6 +30,11 @@
     func: () => window.open('/resume'),
   });
 
+  commandPaletteService.registerCommand({
+    path: ['💻 github'],
+    func: () => window.open('https://github.com/ndbaker1'),
+  });
+
   const showing = writable(false);
   const searchResults = writable([]);
   let searchString = '';

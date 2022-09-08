@@ -20,6 +20,8 @@ export class CommandPaletteService {
     const path = [...command.path];
     const last = path.pop();
 
+    if (!last) throw Error('cannot take an empty command path.');
+
     let map: CommandMap = this.commands;
     for (const pathKey of path) {
       const next = map.get(pathKey) ?? new CommandMap();
@@ -63,13 +65,15 @@ export class CommandPaletteService {
     }
   };
 
-  private traverse = (path: string[]): CommandLeaf | null => {
+  private traverse = (path: string[]): CommandLeaf => {
     let mapping = this.commands;
 
     for (const key of path) {
       if (mapping instanceof CommandMap && mapping.has(key)) {
         const next = mapping.get(key);
-        if (next instanceof CommandMap) {
+        if (!next) {
+          throw Error('Met with undefined command mapping.');
+        } else if (next instanceof CommandMap) {
           mapping = next;
         } else {
           return next;

@@ -1,5 +1,5 @@
 export class KeyMaps {
-  static Mappings = [];
+  static Mappings: ((_: any) => void)[] = [];
 
   static register(keys: string[], callback: () => void): void {
     keys.forEach((key) => {
