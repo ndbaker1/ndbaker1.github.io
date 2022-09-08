@@ -1,4 +1,6 @@
-import { Storage } from './persistentStorage.service';
+import { Storage } from './persistentStorage';
+
+const Store = new Storage();
 
 type ColorVariables =
   | 'bg-color'
@@ -8,9 +10,10 @@ type ColorVariables =
   | 'button-bg-color'
   | 'button-bg-color-hover';
 
-const THEME_KEY = 'theme';
 
 export class Theme {
+  static readonly THEME_KEY = 'theme';
+
   constructor(public name: string, public colors: Record<ColorVariables, string>) { }
 
   setCurrent(): void {
@@ -18,11 +21,11 @@ export class Theme {
     for (const [name, value] of entries) {
       document.documentElement.style.setProperty('--' + name, value);
     }
-    Storage.set(THEME_KEY, this.name);
+    Store.set(Theme.THEME_KEY, this.name);
   }
 
   static refresh(): void {
-    (themes.find((t) => t.name == Storage.get(THEME_KEY)) || themes[0]).setCurrent();
+    (themes.find((t) => t.name == Store.get(Theme.THEME_KEY)) || themes[0]).setCurrent();
   }
 }
 

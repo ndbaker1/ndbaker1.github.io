@@ -4,15 +4,17 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  import { writable } from 'svelte/store';
+  import { blur } from 'svelte/transition';
+
   import { focusOnVisible } from '$lib/actions/focusOnVisible.action';
-  import { CommandPaletteService, CommandStatus } from '$lib/services/command-palette.service';
+  import { clickOutside } from '$lib/actions/outsideClick.action';
 
   import Window from './Window.svelte';
-  import { writable } from 'svelte/store';
-  import { clickOutside } from '$lib/actions/outsideClick.action';
-  import { KeyMaps } from '$lib/services/keymap.service';
-  import { themes } from '$lib/services/theme.service';
-  import { blur } from 'svelte/transition';
+
+  import { CommandPaletteService, CommandStatus } from 'addons/services/command-palette';
+  import { KeyMaps } from 'addons/services/keymap';
+  import { themes } from 'addons/services/theme';
 
   const commandPaletteService = new CommandPaletteService();
 
@@ -22,12 +24,6 @@
       func: () => theme.setCurrent(),
     });
   }
-
-  commandPaletteService.registerCommand({
-    path: ['📺 anime'],
-    func: () =>
-      window.open('https://drive.google.com/file/d/1cmAtaKf69lU6dbBZfXnjsK_MecVnA46K/view'),
-  });
 
   commandPaletteService.registerCommand({
     path: ['📄 resume'],

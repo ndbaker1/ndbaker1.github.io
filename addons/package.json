@@ -1,0 +1,10 @@
+{
+  "name": "addons",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Nicholas Baker",
+  "dependencies": {
+    "typescript": "^4.8.3"
+  }
+}
