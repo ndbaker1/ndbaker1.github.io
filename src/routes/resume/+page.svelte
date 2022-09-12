@@ -72,10 +72,9 @@
   </div>
 
   <div id="main">
-    <Section title="work experience">
+    <Section title="experience">
       {#each portfolio.work as work}
         <Items
-          type="work"
           position={work.position}
           company={work.company}
           location={work.location}
@@ -85,14 +84,26 @@
       {/each}
     </Section>
 
-    <Section title="competitions">
-      {#each portfolio.competitions as comp}
-        <Items
-          type="competition"
-          event={comp.event}
-          dateAndPlace={comp.date + ' | ' + comp.location}
-          items={comp.items}
-        />
+    <Section title="achievements">
+      {#each portfolio.achievements as ev}
+        <p class="small">
+          {ev.title}
+          {ev.info}
+        </p>
+      {/each}
+    </Section>
+
+    <Section title="independent projects">
+      {#each portfolio.projects as proj}
+        <p class="small">
+          <a href={proj.link} class="font-bold">
+            {proj.name}
+          </a>
+          | {proj.date}
+        </p>
+        <p class="small">
+          {proj.description}
+        </p>
       {/each}
     </Section>
   </div>

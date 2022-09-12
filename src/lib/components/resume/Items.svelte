@@ -1,25 +1,15 @@
 <script lang="ts">
-  export let type: 'work' | 'competition';
-  export let event: string;
   export let position: string;
   export let company: string;
   export let date: string;
   export let location: string;
-  export let dateAndPlace: string;
   export let items: string[];
 </script>
 
 <div>
-  {#if type === 'work'}
-    <p><b>{position}</b></p>
-    <p><i>{company}</i></p>
-    <p><i>{date} | {location}</i></p>
-  {/if}
-  {#if type === 'competition'}
-    <p><b>{event}</b></p>
-    <p><i>{dateAndPlace}</i></p>
-  {/if}
-
+  <p>{position}</p>
+  <p>{company}</p>
+  <p>{date} | {location}</p>
   <ul>
     {#each items as note}
       <li><p>{note}</p></li>
