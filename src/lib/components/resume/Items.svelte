@@ -6,31 +6,36 @@
   export let items: string[];
 </script>
 
-<div>
-  <p>{position}</p>
-  <p>{company}</p>
-  <p>{date} | {location}</p>
+<section>
+  <p>
+    {company} - {position}
+  </p>
+  <div class="small" style="display: flex; justify-content: space-between;">
+    <p>{date}</p>
+    <p>{location}</p>
+  </div>
   <ul>
     {#each items as note}
-      <li><p>{note}</p></li>
+      <li><p class="small">{note}</p></li>
     {/each}
   </ul>
-</div>
+</section>
 
 <style>
+  .small {
+    font-size: var(--small-text);
+  }
+
   ul {
     list-style: circle;
     padding-left: 2rem;
   }
 
-  div > p {
-    font-size: 0.9rem;
-  }
-  ul p {
-    font-size: var(--small-text);
-  }
-
   div {
+    display: flex;
+    align-items: baseline;
+  }
+  section {
     margin-bottom: 0.5rem;
   }
 </style>

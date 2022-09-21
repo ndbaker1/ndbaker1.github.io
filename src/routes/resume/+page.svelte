@@ -72,7 +72,7 @@
   </div>
 
   <div id="main">
-    <Section title="experience">
+    <Section title="work experience">
       {#each portfolio.work as work}
         <Items
           position={work.position}
@@ -86,10 +86,10 @@
 
     <Section title="achievements">
       {#each portfolio.achievements as ev}
-        <p class="small">
-          {ev.title}
-          {ev.info}
-        </p>
+        <div class="small" style="display: flex;">
+          <p style="width: 6rem;">{ev.title}</p>
+          <i>{ev.info}</i>
+        </div>
       {/each}
     </Section>
 
@@ -138,7 +138,7 @@
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
   }
 
-  p.small {
+  .small {
     font-size: var(--small-text);
     margin: 0.2rem 0;
     align-items: center;
