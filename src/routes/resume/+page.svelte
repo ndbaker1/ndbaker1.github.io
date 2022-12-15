@@ -35,7 +35,7 @@
           width="20px"
         />
         &nbsp;
-        <a href="mailto:ndbaker1@outlook.com" target="_blank">ndbaker1@outlook.com</a>
+        <a href="mailto:ndbaker1@outlook.com" target="_blank noreferrer">ndbaker1@outlook.com</a>
       </div>
       <div>
         <img
@@ -44,7 +44,7 @@
           width="20px"
         />
         &nbsp;
-        <a href="https://github.com/ndbaker1" target="_blank">github.com/ndbaker1</a>
+        <a href="https://github.com/ndbaker1" target="_blank noreferrer">github.com/ndbaker1</a>
       </div>
     </div>
   </div>
