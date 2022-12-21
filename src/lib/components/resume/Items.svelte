@@ -10,7 +10,7 @@
   <p>
     {company} - {position}
   </p>
-  <div class="small" style="display: flex; justify-content: space-between;">
+  <div class="small flex justify-between items-baseline">
     <p>{date}</p>
     <p>{location}</p>
   </div>
@@ -31,10 +31,6 @@
     padding-left: 2rem;
   }
 
-  div {
-    display: flex;
-    align-items: baseline;
-  }
   section {
     margin-bottom: 0.5rem;
   }

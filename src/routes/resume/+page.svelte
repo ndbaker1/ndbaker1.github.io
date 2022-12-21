@@ -8,8 +8,9 @@
 
 <div id="resume">
   <div id="header">
-    <h2 class="text-xl">Nicholas Baker</h2>
-    <div class="header-items">
+    <h2 class="text-xl text-center">Nicholas Baker</h2>
+    <br />
+    <div class="text-sm header-items">
       <div>
         <img
           alt="location"
@@ -72,28 +73,28 @@
   </div>
 
   <div id="main">
-    <Section title="work experience">
-      {#each portfolio.work as work}
+    <Section title="experience">
+      {#each portfolio.experience as experience}
         <Items
-          position={work.position}
-          company={work.company}
-          location={work.location}
-          date={work.date}
-          items={work.items}
+          position={experience.position}
+          company={experience.company}
+          location={experience.location}
+          date={experience.date}
+          items={experience.items}
         />
       {/each}
     </Section>
 
     <Section title="achievements">
       {#each portfolio.achievements as ev}
-        <div class="small" style="display: flex;">
-          <p style="width: 6rem;">{ev.title}</p>
-          <i>{ev.info}</i>
+        <div class="small flex justify-between pr-4">
+          <p>{ev.title}</p>
+          <p>{ev.info}</p>
         </div>
       {/each}
     </Section>
 
-    <Section title="independent projects">
+    <Section title="independent side-projects">
       {#each portfolio.projects as proj}
         <p class="small">
           <a href={proj.link} class="font-bold">
@@ -111,8 +112,7 @@
 
 <style>
   * {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
-      sans-serif;
+    font-family: 'Lucida Sans Unicode', 'Lucida Sans', sans-serif;
   }
 
   @media print {
@@ -129,7 +129,7 @@
     margin: 0 auto;
     /* organize other components in a grid */
     display: grid;
-    grid-auto-columns: 16rem auto;
+    grid-auto-columns: 15rem auto;
     grid-auto-rows: min-content 1fr;
     grid-template-areas:
       'header main'
