@@ -4,6 +4,6 @@
   "description": "Useful web functions",
   "author": "Nicholas Baker",
   "devDependencies": {
-    "typescript": "^4.8.3"
+    "typescript": "^4.9.4"
   }
 }

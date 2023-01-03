@@ -12,28 +12,30 @@
 
   import Window from './Window.svelte';
 
-  import { CommandPaletteService, CommandStatus } from 'addons/services/command-palette';
+  import { CommandPaletteService, type SelectionItem } from 'addons/services/command-palette';
   import { KeyMaps } from 'addons/services/keymap';
-  import { themes } from 'addons/services/theme';
+  import { ThemeService } from 'addons/services/theme';
+
+  const palleteItems = [
+    ...ThemeService.PRESETS.map((theme) => ({
+      pathItems: ['🎨 theme', theme.name],
+      action: () => ThemeService.setCurrent(theme),
+    })),
+    {
+      pathItems: ['📄 resume'],
+      action: () => window.open('/resume'),
+    },
+    {
+      pathItems: ['💻 github'],
+      action: () => window.open('https://github.com/ndbaker1'),
+    },
+    {
+      pathItems: ['l1', 'l2', 'l3'],
+    },
+  ];
 
   const commandPaletteService = new CommandPaletteService();
-
-  for (const theme of themes) {
-    commandPaletteService.registerCommand({
-      path: ['🎨 theme', theme.name],
-      func: () => theme.setCurrent(),
-    });
-  }
-
-  commandPaletteService.registerCommand({
-    path: ['📄 resume'],
-    func: () => window.open('/resume'),
-  });
-
-  commandPaletteService.registerCommand({
-    path: ['💻 github'],
-    func: () => window.open('https://github.com/ndbaker1'),
-  });
+  palleteItems.forEach((command) => commandPaletteService.registerItem(command));
 
   const showing = writable(false);
   const searchResults = writable([]);
@@ -45,7 +47,7 @@
 
   function updateResults() {
     const augmentedPath = pathString.concat(searchString);
-    const searchReponse = commandPaletteService.search(augmentedPath);
+    const searchReponse = commandPaletteService.query(augmentedPath);
     searchResults.set(searchReponse);
   }
 
@@ -55,10 +57,10 @@
     searchString = '';
 
     switch (commandPaletteService.execute(augmentedPath)) {
-      case CommandStatus.SubCommands:
-        pathString.push(choice);
-        updateResults();
-        break;
+      // case SelectionResponse.Executed:
+      //   pathString.push(choice);
+      //   updateResults();
+      //   break;
       default:
         showing.set(false);
     }
@@ -70,7 +72,7 @@
         pathString = [];
         searchString = '';
         selectedIndex = 0;
-        searchResults.set(commandPaletteService.search(['']));
+        searchResults.set(commandPaletteService.query(['']));
         return !stat;
       })
     );
@@ -108,6 +110,7 @@
           <p
             class="search-result {i === selectedIndex ? 'selected' : ''}"
             on:click={() => handleChoice(result)}
+            on:keypress={() => 0}
           >
             {result}
           </p>
