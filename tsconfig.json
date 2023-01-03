@@ -8,9 +8,13 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "jsx": "preserve",
-    "types": ["vite/client"],
+    "types": [
+      "vite/client"
+    ],
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

@@ -4,6 +4,11 @@ import yaml from '@rollup/plugin-yaml';
 
 const config: UserConfig = {
   plugins: [sveltekit(), yaml()],
+  server: {
+    fs: {
+      allow: ['addons']
+    }
+  },
   build: {
     target: 'esnext',
   },

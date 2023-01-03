@@ -2,10 +2,10 @@
   import '../app.css';
 
   import { onMount } from 'svelte';
-  import { Theme } from 'addons/services/theme';
+  import { ThemeService } from 'addons/services/theme';
 
   onMount(() => {
-    Theme.refresh();
+    ThemeService.refresh();
   });
 </script>
 

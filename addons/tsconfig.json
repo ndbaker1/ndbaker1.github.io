@@ -8,8 +8,5 @@
     "esModuleInterop": true,
     "noEmit": true,
     "isolatedModules": true
-  },
-  "include": [
-    "*"
-  ]
+  }
 }

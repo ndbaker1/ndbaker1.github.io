@@ -8,15 +8,18 @@
   import { blur } from 'svelte/transition';
 
   import { focusOnVisible } from '$lib/actions/focusOnVisible.action';
-  import { clickOutside } from '$lib/actions/outsideClick.action';
 
   import Window from './Window.svelte';
 
-  import { CommandPaletteService, type SelectionItem } from 'addons/services/command-palette';
+  import {
+    CommandPaletteService,
+    SelectionResponse,
+    type SelectionItem,
+  } from 'addons/services/command-palette';
   import { KeyMaps } from 'addons/services/keymap';
   import { ThemeService } from 'addons/services/theme';
 
-  const palleteItems = [
+  const paletteItems: SelectionItem[] = [
     ...ThemeService.PRESETS.map((theme) => ({
       pathItems: ['🎨 theme', theme.name],
       action: () => ThemeService.setCurrent(theme),
@@ -35,15 +38,14 @@
   ];
 
   const commandPaletteService = new CommandPaletteService();
-  palleteItems.forEach((command) => commandPaletteService.registerItem(command));
+  paletteItems.forEach((item) => commandPaletteService.registerItem(item));
 
   const showing = writable(false);
   const searchResults = writable([]);
+
   let searchString = '';
   let pathString = [];
   let selectedIndex = 0;
-
-  clickOutside(() => showing.set(false));
 
   function updateResults() {
     const augmentedPath = pathString.concat(searchString);
@@ -57,10 +59,10 @@
     searchString = '';
 
     switch (commandPaletteService.execute(augmentedPath)) {
-      // case SelectionResponse.Executed:
-      //   pathString.push(choice);
-      //   updateResults();
-      //   break;
+      case SelectionResponse.SubCommands:
+        pathString.push(choice);
+        updateResults();
+        break;
       default:
         showing.set(false);
     }

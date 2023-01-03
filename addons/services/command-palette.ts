@@ -34,20 +34,17 @@ export class CommandPaletteService {
    * @param item item to register
    */
   public registerItem(item: SelectionItem): void {
-
-    if (!item.pathItems) throw Error('cannot take an empty command path.')
+    if (!item.pathItems) throw Error('cannot take an empty command path.');
 
     item.pathItems.reduce((map, pathKey, pathDepth) => {
       const next = map.get(pathKey) ?? new SelectionTree();
-
       if (next instanceof SelectionTree) {
-
-        if (pathDepth === item.pathItems.length - 1) {
-          map.set(pathKey, item);
-        } else {
-          map.set(pathKey, next);
-        }
-
+        map.set(
+          pathKey,
+          pathDepth === item.pathItems.length - 1
+            ? item
+            : next
+        );
         return next;
       } else {
         throw Error('unhandled.');
@@ -60,22 +57,31 @@ export class CommandPaletteService {
    * @param path pathItems provided for the query
    * @returns 
    */
-  public query(path: string[]): string[] {
-    const leaf = this.traverse(path);
+  public query(path: SelectionPath): SelectionPath {
+    // dont actually enter the last element, since we are just searching the options
+    const leaf = this.traverse(path.splice(0, path.length - 1));
+
     if (!leaf) {
       return [];
     } else if (leaf instanceof SelectionTree) {
       const term = path[path.length - 1];
       return [...leaf]
-        .map(([key, _]) => key)
+        .map(([key, _]) => key.trim())
         .filter((key) => key.startsWith(term) || key.includes(term));
     } else {
+      console.log('test')
       return [leaf.pathItems[leaf.pathItems.length - 1]];
     }
   }
 
-  public execute(path: string[]): SelectionResponse {
+  /**
+   * Execue the path query, and return the status of the operation
+   * @param path pathItems provided for the query
+   * @returns status of the result from the selection
+   */
+  public execute(path: SelectionPath): SelectionResponse {
     const leaf = this.traverse(path);
+
     if (!leaf) {
       // return invalid command flag when the traversal is invalid
       return SelectionResponse.Invalid;
@@ -98,11 +104,8 @@ export class CommandPaletteService {
     return path.reduce((branch, pathKey) => {
       if (branch instanceof SelectionTree && branch.has(pathKey)) {
         const next = branch.get(pathKey);
-        if (next instanceof SelectionTree) {
-          return next;
-        } else {
-          throw Error('Met with undefined command mapping.');
-        }
+        if (!next) throw Error('Met with undefined command mapping.');
+        return next;
       } else {
         return branch;
       }
