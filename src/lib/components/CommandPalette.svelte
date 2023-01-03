@@ -32,9 +32,6 @@
       pathItems: ['💻 github'],
       action: () => window.open('https://github.com/ndbaker1'),
     },
-    {
-      pathItems: ['l1', 'l2', 'l3'],
-    },
   ];
 
   const commandPaletteService = new CommandPaletteService();
