@@ -94,7 +94,7 @@
       {/each}
     </Section>
 
-    <Section title="independent side-projects">
+    <Section title="independent projects">
       {#each portfolio.projects as proj}
         <p class="small">
           <a href={proj.link} class="font-bold">
