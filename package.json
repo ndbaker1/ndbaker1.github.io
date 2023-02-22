@@ -15,7 +15,7 @@
     "addons": "file:addons",
     "@rollup/plugin-yaml": "^4.0.1",
     "@sveltejs/adapter-static": "1.0.0",
-    "@sveltejs/kit": "1.0.0",
+    "@sveltejs/kit": "1.7.1",
     "autoprefixer": "^10.4.13",
     "postcss-load-config": "^4.0.1",
     "prettier": "^2.8.1",
