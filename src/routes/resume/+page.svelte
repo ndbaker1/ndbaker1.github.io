@@ -18,7 +18,7 @@
           width="20px"
         />
         &nbsp;
-        <p>Plano, TX</p>
+        <p>Seattle, WA</p>
       </div>
       <div>
         <img
