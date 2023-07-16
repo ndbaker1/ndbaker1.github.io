@@ -4,18 +4,14 @@
   export let date: string;
 </script>
 
-<div class="edu">
+<div class="edu small">
   <h2>{title}</h2>
-  <p>{location}</p>
-  <p>{date}</p>
+  <p class="smaller">{location}</p>
+  <p class="smaller">{date}</p>
 </div>
 
 <style>
   div.edu {
     margin-bottom: 1rem;
-  }
-
-  div.edu p {
-    font-size: var(--small-text);
   }
 </style>

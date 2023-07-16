@@ -7,6 +7,6 @@
 <style>
   footer {
     text-align: center;
-    font-size: var(--small-text);
+    font-size: var(--text-small);
   }
 </style>

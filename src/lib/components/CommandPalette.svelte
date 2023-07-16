@@ -136,7 +136,7 @@
 
   #command-bar .search-result {
     padding: 0.5rem;
-    font-size: var(--small-text);
+    font-size: var(--text-small);
   }
 
   #command-bar .search-result:hover,

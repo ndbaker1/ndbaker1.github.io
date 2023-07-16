@@ -7,8 +7,11 @@
 </script>
 
 <section>
-  <p>
-    {company} - {position}
+  <p class="small">
+    <b>{company}</b>
+  </p>
+  <p class="small">
+    <i>{position}</i>
   </p>
   <div class="small flex justify-between items-baseline">
     <p>{date}</p>
@@ -16,16 +19,12 @@
   </div>
   <ul>
     {#each items as note}
-      <li><p class="small">{note}</p></li>
+      <li><p class="smaller">{note}</p></li>
     {/each}
   </ul>
 </section>
 
 <style>
-  .small {
-    font-size: var(--small-text);
-  }
-
   ul {
     list-style: circle;
     padding-left: 2rem;
