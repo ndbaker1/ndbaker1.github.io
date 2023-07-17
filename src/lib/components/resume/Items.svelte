@@ -17,11 +17,13 @@
     <p>{date}</p>
     <p>{location}</p>
   </div>
-  <ul>
-    {#each items as note}
-      <li><p class="smaller">{note}</p></li>
-    {/each}
-  </ul>
+  {#if items}
+    <ul>
+      {#each items as note}
+        <li><p class="smaller">{note}</p></li>
+      {/each}
+    </ul>
+  {/if}
 </section>
 
 <style>
