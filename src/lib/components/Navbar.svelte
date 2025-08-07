@@ -7,7 +7,7 @@
 
 <div id="navbar" class="themed">
   {#if scrollY < 20}
-    <header transition:fly class="bar themed fixed grid text-left p-4">
+    <header transition:fly|global class="bar themed fixed grid text-left p-4">
       <a id="name" href="./" class="text-xl"> Nick Baker </a>
       <small><kbd>Escape</kbd> to navigate</small>
     </header>

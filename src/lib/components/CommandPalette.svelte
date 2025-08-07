@@ -94,7 +94,7 @@
 
 <!-- Command Bar -->
 {#if $showing}
-  <span transition:blur id="backdrop">
+  <span transition:blur|global id="backdrop">
     <Window position={{ top: '8rem' }} on:close-window={() => showing.set(false)}>
       <div id="command-bar">
         <input
