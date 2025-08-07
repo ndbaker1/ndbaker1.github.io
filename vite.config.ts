@@ -1,17 +1,12 @@
-import { UserConfig } from 'vite';
-import { sveltekit } from '@sveltejs/kit/vite';
-import yaml from '@rollup/plugin-yaml';
+import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte'
+import ViteYaml from '@modyfi/vite-plugin-yaml';
 
-const config: UserConfig = {
-  plugins: [sveltekit(), yaml()],
+export default defineConfig({
+  plugins: [svelte(), ViteYaml()],
   server: {
     fs: {
       allow: ['addons']
     }
   },
-  build: {
-    target: 'esnext',
-  },
-};
-
-export default config;
+})

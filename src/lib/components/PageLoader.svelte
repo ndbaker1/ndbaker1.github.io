@@ -1,4 +1,4 @@
-<div class="page-loader" />
+<div class="page-loader"></div>
 
 <style>
   .page-loader {

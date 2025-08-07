@@ -2,7 +2,12 @@
   import { clickOutside } from '../actions/outsideClick.action';
   import { createEventDispatcher } from 'svelte';
 
-  export let position: { left?: string; top?: string } = {};
+  interface Props {
+    position?: { left?: string; top?: string };
+    children?: import('svelte').Snippet;
+  }
+
+  let { position = {}, children }: Props = $props();
 
   const dispatch = createEventDispatcher();
 
@@ -14,7 +19,7 @@
   class="themed window fixed top-1/2 left-1/2 transform -translate-x-1/2"
   style="left: {position?.left}; top: {position?.top};"
 >
-  <slot />
+  {@render children?.()}
 </span>
 
 <style>

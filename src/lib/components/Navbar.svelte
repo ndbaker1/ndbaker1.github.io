@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
-  let scrollY: number;
+  let scrollY: number = $state();
 </script>
 
 <svelte:window bind:scrollY />

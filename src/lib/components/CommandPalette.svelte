@@ -40,9 +40,9 @@
   const showing = writable(false);
   const searchResults = writable([]);
 
-  let searchString = '';
+  let searchString = $state('');
   let pathString = [];
-  let selectedIndex = 0;
+  let selectedIndex = $state(0);
 
   function updateResults() {
     const augmentedPath = pathString.concat(searchString);
@@ -102,14 +102,14 @@
           placeholder="Search"
           use:focusOnVisible
           bind:value={searchString}
-          on:input={updateResults}
-          on:introstart={updateResults}
+          oninput={updateResults}
+          onintrostart={updateResults}
         />
         {#each $searchResults as result, i}
           <p
             class="search-result {i === selectedIndex ? 'selected' : ''}"
-            on:click={() => handleChoice(result)}
-            on:keypress={() => 0}
+            onclick={() => handleChoice(result)}
+            onkeypress={() => 0}
           >
             {result}
           </p>
