@@ -15,6 +15,8 @@
 </div>
 
 <style>
+  @reference "tailwindcss";
+
   * {
     font-family: 'Fira Code', sans-serif;
   }

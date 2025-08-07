@@ -23,6 +23,8 @@
 </span>
 
 <style>
+  @reference "tailwindcss";
+
   .window {
     background-color: var(--bg-color);
     border: 0 solid var(--text-color);

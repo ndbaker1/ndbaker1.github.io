@@ -1,6 +1,9 @@
 /* Global Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
+@import "tailwindcss";
+
+
 /* Write your global styles here, in PostCSS syntax */
 @tailwind base;
 @tailwind components;
@@ -20,7 +23,6 @@
 
 body {
   margin: 0;
-  overflow-x: hidden;
   min-height: 100vh;
   background-color: var(--bg-color);
 }

@@ -15,6 +15,8 @@
 </div>
 
 <style>
+  @reference "tailwindcss";
+
   * {
     font-family: 'Fira Code', serif;
     letter-spacing: 2px;

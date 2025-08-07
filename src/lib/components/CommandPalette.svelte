@@ -120,6 +120,8 @@
 {/if}
 
 <style>
+  @reference "tailwindcss";
+
   #command-bar {
     font-family: 'Fira Code', monospace;
     z-index: 99;

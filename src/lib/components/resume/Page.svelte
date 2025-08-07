@@ -111,6 +111,8 @@
 </div>
 
 <style>
+  @reference "tailwindcss";
+
   * {
     font-family: 'Lucida Sans Unicode', 'Lucida Sans', sans-serif;
   }

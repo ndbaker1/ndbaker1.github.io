@@ -1,9 +1,14 @@
+import tailwindcss from '@tailwindcss/vite'
+import { sveltekit } from '@sveltejs/kit/vite'
 import { defineConfig } from 'vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte'
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 
 export default defineConfig({
-  plugins: [svelte(), ViteYaml()],
+  plugins: [
+    sveltekit(),
+    tailwindcss(),
+    ViteYaml(),
+  ],
   server: {
     fs: {
       allow: ['addons']

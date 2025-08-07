@@ -16,6 +16,8 @@
 </div>
 
 <style>
+  @reference "tailwindcss";
+
   .section-title {
     text-transform: uppercase;
     font-size: 1.1rem;

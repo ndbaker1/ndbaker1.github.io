@@ -37,6 +37,8 @@
 </section>
 
 <style>
+  @reference "tailwindcss";
+
   ul {
     list-style: circle;
     padding-left: 2rem;
