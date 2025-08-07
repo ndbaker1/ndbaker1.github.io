@@ -21,15 +21,15 @@
 
   const paletteItems: SelectionItem[] = [
     ...ThemeService.PRESETS.map((theme) => ({
-      pathItems: ['🎨 theme', theme.name],
+      pathItems: ['theme', theme.name],
       action: () => ThemeService.setCurrent(theme),
     })),
     {
-      pathItems: ['📄 resume'],
+      pathItems: ['resume'],
       action: () => window.open('/resume'),
     },
     {
-      pathItems: ['💻 github'],
+      pathItems: ['github'],
       action: () => window.open('https://github.com/ndbaker1'),
     },
   ];

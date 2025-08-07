@@ -1,5 +1,5 @@
 
 [submodule "ndbaker1"]
     path = "src/lib/ndbaker1"
-    url = "https://github.com/ndbaker1/ndbaker1"
+    url = "git@github.com:ndbaker1/ndbaker1.git"
     branch = "main"

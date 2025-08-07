@@ -129,13 +129,14 @@
     margin: 0 auto;
     /* organize other components in a grid */
     display: grid;
-    grid-auto-columns: 15rem auto;
+    grid-auto-columns: 14rem auto;
     grid-auto-rows: min-content 1fr;
     grid-template-areas:
       'header main'
       'side main';
 
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    overflow: clip;
   }
 
   .small {
