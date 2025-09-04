@@ -85,26 +85,17 @@
       {/each}
     </Section>
 
-    <Section title="achievements">
-      {#each portfolio.achievements as ev}
-        <div class="small flex justify-between pr-4">
-          <p>{ev.title}</p>
-          <p>{ev.info}</p>
+    <Section title="accomplishments">
+      {#each portfolio.accomplishments as ac}
+        <div class="small flex flex-row pr-4">
+          {#if ac.link}
+            <a href={ac.link} target="_blank">{ac.name}</a>
+            &nbsp;
+            <p class="tiny">🔗</p>
+          {:else}
+            <p>{ac.name}</p>
+          {/if}
         </div>
-      {/each}
-    </Section>
-
-    <Section title="independent projects">
-      {#each portfolio.projects as proj}
-        <p class="small">
-          <a href={proj.link} class="font-bold">
-            {proj.name}
-          </a>
-          | {proj.date}
-        </p>
-        <p class="small">
-          {proj.description}
-        </p>
       {/each}
     </Section>
   </div>
