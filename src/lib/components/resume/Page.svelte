@@ -13,15 +13,6 @@
     <div class="text-sm header-items">
       <div>
         <img
-          alt="location"
-          src="https://img.icons8.com/material-rounded/192/ffffff/address.png"
-          width="20px"
-        />
-        &nbsp;
-        <p>Seattle, WA</p>
-      </div>
-      <div>
-        <img
           alt="phone"
           src="https://img.icons8.com/fluency-systems-filled/96/ffffff/phone.png"
           width="20px"
