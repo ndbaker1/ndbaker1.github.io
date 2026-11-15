@@ -36,6 +36,15 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: circle;
+  padding-left: 1rem;
+}
+
+li::marker {
+  font-size: 0.7em; /* Makes the bullet dot 70% of the text size */
+}
+
 * {
   box-sizing: border-box;
 }

@@ -9,12 +9,12 @@
 <div id="resume">
   <div id="header">
     <h2 class="text-center name">Nicholas Baker</h2>
-    <div class="text-sm header-items">
+    <div class="smaller header-items">
       <div>
         <img
           alt="phone"
           src="https://img.icons8.com/fluency-systems-filled/96/000000/phone.png"
-          width="20px"
+          width="10px"
         />
         &nbsp;
         <p>(972) 330-6048</p>
@@ -24,7 +24,7 @@
         <img
           alt="email"
           src="https://img.icons8.com/material-rounded/192/000000/mail.png"
-          width="20px"
+          width="10px"
         />
         &nbsp;
         <a href="mailto:ndbaker1@outlook.com" target="_blank" rel="noreferrer">ndbaker1@outlook.com</a>
@@ -34,7 +34,7 @@
         <img
           alt="github"
           src="https://img.icons8.com/ios-glyphs/120/000000/repository.png"
-          width="20px"
+          width="10px"
         />
         &nbsp;
         <a href="https://github.com/ndbaker1" target="_blank" rel="noreferrer">github.com/ndbaker1</a>
@@ -50,17 +50,15 @@
     </Section>
 
     <Section title="tools">
-      <p class="small">{portfolio.skills.tools.join(', ')}</p>
+      <p class="smaller">{portfolio.skills.tools.join(', ')}</p>
     </Section>
 
     <Section title="languages">
-      <p class="small">{portfolio.skills.languages.join(', ')}</p>
+      <p class="smaller">{portfolio.skills.languages.join(', ')}</p>
     </Section>
 
     <Section title="interests">
-      {#each portfolio.interests as interest}
-        <p class="small">{interest}</p>
-      {/each}
+      <p class="smaller"> {portfolio.interests.join(', ')}</p>
     </Section>
   </div>
 
@@ -78,17 +76,19 @@
     </Section>
 
     <Section title="accomplishments">
-      {#each portfolio.accomplishments as ac}
-        <div class="small flex flex-row pr-4">
-          {#if ac.link}
-            <a href={ac.link} target="_blank">{ac.name}</a>
-            &nbsp;
-            <p class="tiny">🔗</p>
-          {:else}
-            <p>{ac.name}</p>
-          {/if}
-        </div>
-      {/each}
+      <ul>
+        {#each portfolio.accomplishments as ac}
+          <li>
+            <div class="smaller flex flex-row pr-4">
+              {#if ac.link}
+                <u><a href={ac.link} target="_blank">{ac.name}</a></u>
+              {:else}
+                <p>{ac.name}</p>
+              {/if}
+            </div>
+          </li>
+        {/each}
+      </ul>
     </Section>
   </div>
 </div>
@@ -113,7 +113,7 @@
     margin: 0 auto;
     /* organize other components in a grid */
     display: grid;
-    grid-auto-columns: 14rem auto;
+    grid-auto-columns: 13rem auto;
     grid-auto-rows: min-content 1fr;
     grid-template-areas:
       'header header'
@@ -122,20 +122,11 @@
     background-color: white;
   }
 
-  .small {
-    font-size: 0.75rem;
-    margin: 0.2rem 0;
-  }
-
-  img {
-    vertical-align: bottom;
-  }
-
   #header {
     position: relative;
     grid-area: header;
-    margin-top: 1rem;
-    padding: 1rem;
+    margin-top: 2rem;
+    padding: 0.5rem;
   }
 
   #header > .name {
@@ -148,8 +139,8 @@
   #header::before {
     content: "";
     position: absolute;
-    top: 4px;
-    bottom: 4px;
+    top: 1rem;
+    bottom: 1rem;
     right: 0;
     border-right: 1px solid #ccc;
   }
@@ -158,8 +149,8 @@
   #header::after {
     content: "";
     position: absolute;
-    left: 4px;
-    right: 4px;
+    left: 1rem;
+    right: 1rem;
     bottom: 0;
     border-bottom: 1px solid #ccc;
   }
@@ -188,8 +179,8 @@
   #side::after {
     content: "";
     position: absolute;
-    top: 4px;
-    bottom: 4px;
+    top: 1rem;
+    bottom: 1rem;
     right: 0;
     border-right: 1px solid #ccc;
   }

@@ -23,7 +23,7 @@
   </h3>
   <div class="smaller flex justify-between items-baseline position">
     <p>{position}</p>
-    <p>{date}</p>
+    <i>{date}</i>
   </div>
   {#if items}
     <ul>
@@ -35,15 +35,6 @@
 </section>
 
 <style>
-  ul {
-    list-style: circle;
-    padding-left: 2rem;
-  }
-
-  li::marker {
-    font-size: 0.7em; /* Makes the bullet dot 70% of the text size */
-  }
-
   section {
     margin-bottom: 0.5rem;
   }
