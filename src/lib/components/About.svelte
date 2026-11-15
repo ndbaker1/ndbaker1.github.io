@@ -8,7 +8,7 @@
   <div class="flex flex-col m-auto pt-10">
     <div class="grid gap-2">
       <div>
-        <h2 class="skill-header text-3xl my-2">Things I'm Into..</h2>
+        <h2 class="skill-header text-3xl my-2">Things I'm Into…</h2>
         <div class="align-left">
           {#each interests as interest}
             <p>

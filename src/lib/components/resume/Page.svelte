@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Items from './Items.svelte';
   import Section from './Section.svelte';
   import Education from './Education.svelte';
@@ -14,7 +14,7 @@
       <div>
         <img
           alt="phone"
-          src="https://img.icons8.com/fluency-systems-filled/96/ffffff/phone.png"
+          src="https://img.icons8.com/fluency-systems-filled/96/000000/phone.png"
           width="20px"
         />
         &nbsp;
@@ -23,7 +23,7 @@
       <div>
         <img
           alt="email"
-          src="https://img.icons8.com/material-rounded/192/ffffff/mail.png"
+          src="https://img.icons8.com/material-rounded/192/000000/mail.png"
           width="20px"
         />
         &nbsp;
@@ -32,7 +32,7 @@
       <div>
         <img
           alt="github"
-          src="https://img.icons8.com/ios-glyphs/120/ffffff/repository.png"
+          src="https://img.icons8.com/ios-glyphs/120/000000/repository.png"
           width="20px"
         />
         &nbsp;
@@ -96,7 +96,7 @@
   @reference "tailwindcss";
 
   * {
-    font-family: 'Lucida Sans Unicode', 'Lucida Sans', sans-serif;
+    font-family: "Source Sans 3", sans-serif;
   }
 
   @media print {
@@ -121,6 +121,7 @@
 
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
     overflow: clip;
+    background-color: white;
   }
 
   .small {
@@ -134,10 +135,29 @@
   }
 
   #header {
+    position: relative;
     grid-area: header;
-    background-color: rgb(57, 57, 57);
-    color: whitesmoke;
     padding: 1.5rem;
+  }
+
+  /* vertical line between header and main, with gaps at the page edge and intersection */
+  #header::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    right: 0;
+    border-right: 1px solid #ccc;
+  }
+
+  /* horizontal line under the header, with gaps at the page edge and intersection */
+  #header::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    bottom: 0;
+    border-bottom: 1px solid #ccc;
   }
 
   #header > .header-items > div {
@@ -145,9 +165,19 @@
   }
 
   #side {
+    position: relative;
     grid-area: side;
-    background-color: rgb(250, 250, 250);
     padding: 1.5rem;
+  }
+
+  /* vertical line between side and main, with gaps at the page edge and intersection */
+  #side::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    right: 0;
+    border-right: 1px solid #ccc;
   }
 
   #main {
