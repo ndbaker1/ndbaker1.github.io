@@ -21,7 +21,7 @@
   .section-title {
     text-transform: uppercase;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 800;
   }
 
   div.content {

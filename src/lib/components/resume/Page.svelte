@@ -8,8 +8,7 @@
 
 <div id="resume">
   <div id="header">
-    <h2 class="text-xl text-center">Nicholas Baker</h2>
-    <br />
+    <h2 class="text-center name">Nicholas Baker</h2>
     <div class="text-sm header-items">
       <div>
         <img
@@ -20,6 +19,7 @@
         &nbsp;
         <p>(972) 330-6048</p>
       </div>
+            |
       <div>
         <img
           alt="email"
@@ -27,8 +27,9 @@
           width="20px"
         />
         &nbsp;
-        <a href="mailto:ndbaker1@outlook.com" target="_blank noreferrer">ndbaker1@outlook.com</a>
+        <a href="mailto:ndbaker1@outlook.com" target="_blank" rel="noreferrer">ndbaker1@outlook.com</a>
       </div>
+            |
       <div>
         <img
           alt="github"
@@ -36,7 +37,7 @@
           width="20px"
         />
         &nbsp;
-        <a href="https://github.com/ndbaker1" target="_blank noreferrer">github.com/ndbaker1</a>
+        <a href="https://github.com/ndbaker1" target="_blank" rel="noreferrer">github.com/ndbaker1</a>
       </div>
     </div>
   </div>
@@ -93,8 +94,6 @@
 </div>
 
 <style>
-  @reference "tailwindcss";
-
   * {
     font-family: "Source Sans 3", sans-serif;
   }
@@ -102,13 +101,14 @@
   @media print {
     @page {
       size: letter;
+      margin: 0;
     }
   }
 
   #resume {
-    /* dimensions of letter paper */
+    /* letter-size paper; grows to a second page if content overflows */
     width: 8.5in;
-    height: 11in;
+    min-height: 11in;
     /* remove top/bottom margins and center */
     margin: 0 auto;
     /* organize other components in a grid */
@@ -116,18 +116,15 @@
     grid-auto-columns: 14rem auto;
     grid-auto-rows: min-content 1fr;
     grid-template-areas:
-      'header main'
+      'header header'
       'side main';
-
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-    overflow: clip;
     background-color: white;
   }
 
   .small {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     margin: 0.2rem 0;
-    align-items: center;
   }
 
   img {
@@ -137,7 +134,14 @@
   #header {
     position: relative;
     grid-area: header;
-    padding: 1.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+
+  #header > .name {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
   }
 
   /* vertical line between header and main, with gaps at the page edge and intersection */
@@ -160,8 +164,18 @@
     border-bottom: 1px solid #ccc;
   }
 
-  #header > .header-items > div {
+  /* center the contact row to match the centered name */
+  #header .header-items {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0.6;
+    gap: 1rem;
+  }
+
+  #header .header-items > div {
+    display: flex;
+    align-items: center;
   }
 
   #side {

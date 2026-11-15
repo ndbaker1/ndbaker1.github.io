@@ -8,8 +8,8 @@
   let { title, location, date }: Props = $props();
 </script>
 
-<div class="edu small">
-  <h2>{title}</h2>
+<div class="education small">
+  <h3 class="title"><b>{title}</b></h3>
   <p class="smaller">{location}</p>
   <p class="smaller">{date}</p>
 </div>
@@ -17,7 +17,11 @@
 <style>
   @reference "tailwindcss";
 
-  div.edu {
-    margin-bottom: 1rem;
+  div.education {
+    margin-bottom: 0.5rem;
+  }
+
+  .title {
+    opacity: 0.85;
   }
 </style>
