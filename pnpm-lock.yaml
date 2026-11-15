@@ -5,8 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  js-yaml: ^4.2.2
-  deepmerge: ^4.3.1
+  js-yaml: 4.3.2
 
 importers:
 
@@ -33,7 +32,7 @@ importers:
         version: 7.3.1(svelte@5.57.3)(vite@8.3.8(jiti@2.7.0))
       addons:
         specifier: file:addons
-        version: file:addons
+        version: link:addons
       autoprefixer:
         specifier: ^10.6.2
         version: 10.6.2(postcss@8.5.33)
@@ -59,11 +58,17 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
       typescript:
-        specifier: ^6.0.0
+        specifier: ^6.0.3
         version: 6.0.3
       vite:
         specifier: ^8.3.8
         version: 8.3.8(jiti@2.7.0)
+
+  addons:
+    devDependencies:
+      typescript:
+        specifier: ^4.9.4
+        version: 4.9.5
 
 packages:
 
@@ -364,9 +369,6 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  addons@file:addons:
-    resolution: {directory: addons, type: directory}
-
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
@@ -661,6 +663,11 @@ packages:
 
   tslib@2.9.1:
     resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==}
+
+  typescript@4.9.5:
+    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
 
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
@@ -969,8 +976,6 @@ snapshots:
 
   acorn@8.19.0: {}
 
-  addons@file:addons: {}
-
   argparse@2.0.1: {}
 
   aria-query@5.3.1: {}
@@ -1223,6 +1228,8 @@ snapshots:
   totalist@3.0.1: {}
 
   tslib@2.9.1: {}
+
+  typescript@4.9.5: {}
 
   typescript@6.0.3: {}
 
