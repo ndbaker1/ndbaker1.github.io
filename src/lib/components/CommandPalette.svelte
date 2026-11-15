@@ -7,7 +7,7 @@
   import { writable } from 'svelte/store';
   import { blur } from 'svelte/transition';
 
-  import { focusOnVisible } from '$lib/actions/focusOnVisible.action';
+  import { focusOnVisible } from '#lib/actions/focusOnVisible.action';
 
   import Window from './Window.svelte';
 
@@ -120,8 +120,6 @@
 {/if}
 
 <style>
-  @reference "tailwindcss";
-
   #command-bar {
     font-family: 'Fira Code', monospace;
     z-index: 99;

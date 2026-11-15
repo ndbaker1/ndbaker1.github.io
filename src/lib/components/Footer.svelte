@@ -2,8 +2,6 @@
 </footer>
 
 <style>
-  @reference "tailwindcss";
-
   footer {
     text-align: center;
     font-size: var(--text-small);

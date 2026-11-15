@@ -15,8 +15,6 @@
 </div>
 
 <style>
-  @reference "tailwindcss";
-
   div.education {
     margin-bottom: 0.5rem;
   }

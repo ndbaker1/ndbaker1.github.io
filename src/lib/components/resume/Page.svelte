@@ -3,7 +3,7 @@
   import Section from './Section.svelte';
   import Education from './Education.svelte';
 
-  import portfolio from '$lib/ndbaker1/portfolio.yml';
+  import portfolio from '#lib/ndbaker1/portfolio.yml';
 </script>
 
 <div id="resume">

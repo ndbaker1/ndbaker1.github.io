@@ -1,8 +1,6 @@
 <div class="page-loader"></div>
 
 <style>
-  @reference "tailwindcss";
-
   .page-loader {
     z-index: 999;
     background-color: #111;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import portfolio from '$lib/ndbaker1/portfolio.yml';
+  import portfolio from '#lib/ndbaker1/portfolio.yml';
 
   const interests: string[] = portfolio.interests;
 </script>
@@ -55,8 +55,6 @@
 </section>
 
 <style>
-  @reference "tailwindcss";
-
   svg {
     fill: var(--text-color);
   }

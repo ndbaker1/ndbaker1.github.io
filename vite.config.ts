@@ -3,9 +3,14 @@ import { sveltekit } from '@sveltejs/kit/vite'
 import { defineConfig } from 'vite';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 
-export default defineConfig({
+const base = process.env.BASE_HREF ? '/' + process.env.BASE_HREF : '';
+
+export default defineConfig(async () => ({
   plugins: [
-    sveltekit(),
+    sveltekit({
+      adapter: (await import('@sveltejs/adapter-static')).default(),
+      paths: { base },
+    }),
     tailwindcss(),
     ViteYaml(),
   ],
@@ -14,4 +19,9 @@ export default defineConfig({
       allow: ['addons']
     }
   },
-})
+  resolve: {
+    alias: {
+      '#lib': '/src/lib',
+    },
+  },
+}))

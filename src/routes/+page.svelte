@@ -1,9 +1,9 @@
 <script lang="ts">
-  import About from '$lib/components/About.svelte';
-  import CommandBar from '$lib/components/CommandPalette.svelte';
-  import Footer from '$lib/components/Footer.svelte';
-  import Navbar from '$lib/components/Navbar.svelte';
-  import PageLoader from '$lib/components/PageLoader.svelte';
+  import About from '#lib/components/About.svelte';
+  import CommandBar from '#lib/components/CommandPalette.svelte';
+  import Footer from '#lib/components/Footer.svelte';
+  import Navbar from '#lib/components/Navbar.svelte';
+  import PageLoader from '#lib/components/PageLoader.svelte';
 </script>
 
 <PageLoader />
@@ -15,8 +15,6 @@
 </div>
 
 <style>
-  @reference "tailwindcss";
-
   * {
     font-family: 'Fira Code', serif;
     letter-spacing: 2px;
